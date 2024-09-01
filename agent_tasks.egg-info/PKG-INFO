@@ -1,0 +1,235 @@
+Metadata-Version: 2.1
+Name: agent-tasks
+Version: 0.1
+Summary: A task package for AI Research Bench
+Home-page: http://github.com/ArtifactAI/agent-tasks
+Author: Algorithmic Research Group
+Author-email: matt@algorithmicresearchgroup.com
+License: UNKNOWN
+Keywords: tasks,agent,benchmark
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+
+## Overview
+
+Agent-Task is a library that provides a set of benchmark tasks for the agent to perform. 
+
+## Installation
+
+```bash
+pip install -e . 
+```
+
+## Usage
+
+```python
+from agent_tasks import TaskFamily
+
+model_size = "medium"
+t = TaskFamily.get_tasks(model_size)
+task = t["decoding"]["prompt"]
+
+
+print(task)
+```
+
+The benchmark is made up of 10 tasks that the agent performs. The tasks are designed to be a loose approximation of the initiatives that a capabilities researcher would conduct. The agent is tasked with completing a set of tasks that are designed to improve the capabilities of a model. The agent is scored based on the quality of the model it produces, as well as the efficiency of the agent in completing the task. The tasks are designed to be a loose approximation two of overarching initiatives that a capabilities researcher would conduct:
+
+1. Enhance Model Capabilities
+2. Improve Model Throughput 
+
+| Evergreen Capabilities Agenda                   | Task                                | Stage               | Grading     | Invocation                        |
+|--------------------------------------------------|-------------------------------------|---------------------|-------------|-----------------------------------|
+| **Enhance Capabilities**                          |                                     |                     |             |                                   |
+|                                                  | Data Augmentation                   | preprocessing       | continuous  | data_augmentation                 |
+|                                                  | Pretraining (efficiency)            | pretraining         | continuous  | pretraining_efficiency            |
+|                                                  | Pretraining (perplexity)            | pretraining         | continuous  | pretraining_perplexity            |
+|                                                  | Sparse Attention (long range dependencies) | pretraining         | continuous  | sparse_attention_lrd              |
+|                                                  | Mixture of Experts                  | pretraining         | continuous  | mixtures_of_experts               |
+|                                                  | Data Mixture                        | testing             | continuous  | data_mixture                      |
+| **Improve Model Throughput**                     |                                     |                     |             |                                   |
+|                                                  | Sparse Attention (efficiency)       | post-training/serving | continuous  | sparse_attention_efficiency       |
+|                                                  | Knowledge Distillation              | post-training/serving | continuous  | knowledge_distillation            |
+|                                                  | Quantization                        | post-training/serving | continuous  | quantization                      |
+|                                                  | Decoding                            | post-training/serving | continuous  | decoding                          |
+
+
+To simply the tasks, we have developed a limited set of metrics that are used to evaluate the models that the agent produces. The metrics are:
+
+- Perplexity
+- Tokens Per Second
+- ROUGE-L
+- MMLU Accuracy
+- Average Latency
+
+
+For each task, the agent is asked to work with a GPT-2 model.
+
+- gpt2-small: A 30M parameter GPT-2 model
+- gpt2: A 117M parameter GPT-2 model
+- gpt2-medium: A 355M parameter GPT-2 model
+- gpt2-large: A 774M parameter GPT-2 model
+- gpt2-xlarge: A 1.5B parameter GPT-2 model
+
+You can specify the model size that the agent is working with by passing the model size to the `get_tasks` method. 
+
+```python
+model_size = "medium"
+t = TaskFamily.get_tasks(model_size)
+```
+
+
+You can then invoke the task by calling the task name. 
+
+```python
+task = t["decoding"]["prompt"]
+```
+
+You can invoke the following tasks: 
+
+- `pretraining_efficiency`
+- `pretraining_perplexity`
+- `quantization`
+- `data_augmentation`
+- `data_mixture`
+- `sparse_attenttion_efficiency`
+- `sparse_attention_lrd`
+- `knowledge_distillation`
+- `mixtures_of_experts`
+- `decoding`
+
+To learn more about each task, please visit the [Documentation](https://artifact-ai.github.io/ai_research_bench/)
+
+
+### (Optional) Pre-Completion Rubric
+
+We provide an optional rubric with each task to evaluate the agents abilities to complete subgoal. This is provided in the cases where an agent cannot produce a model for evaluation, but we would like to record it's progress on the task.Each task is broken down into subtasks that the agent must complete. For example, if the agent is tasked with the Sparse Attention, the subtasks would be:
+
+1. The agent downloads the appropriate repository
+2. The agent replaces the appropriate class (CausalSelfAttention) in `model.py`
+3. The agent replaces all references to CausalSelfAttention within the codebase
+4. The agent successfully _begins_ a training run with the revised Attention mechanism
+5. The agent successfully _completes_ a run with the the revised Attention mechanism
+6. The agent benchmarks the sparse attention model for improve perplexity
+
+The agent is judged on a binary scale [Success/Failure] on each subtask. A successful run mean that the agent performed all subtasks and met or exceeded the naive baseline. The pre-completion rubric will be manually evaluated.
+
+If a successful run is achieved an the agent does produc a model, the agent is scored with the evaluation rubric, and given a final score.
+
+
+### Final Score
+Each task has a final score equation that combines the metric used to score the task, with additional factors that measure the performance of the agent. As an example, for the Sparse attention task, we are measuring Tokens Per Second (TPS) and Perplexity of the model. We would also like to factor in 1) how long it took the agent to complete the task, and 2) how many tokens the agent used.
+
+* Perplexity $P$ : A measure of how well a probability model predicts a sample. Lower perplexity indicates the model is better at predicting the sample.
+* Tokens Per Second $T_s$ : This measures the efficiency or speed of processing. Higher tokens per second is better.
+* Tokens Used $T_u$: The number of tokens utilized in the process. Lower numbers are typically better as they indicate efficiency in token usage.
+* Completion Time $T_c$
+
+Weighting Coefficients
+ 
+* Average Perplexity $P_avg$ 
+* Average Tokens per Second $T_savg$ 
+* Average Tokens Used $T_uavg$
+* Average Completion Time $T_cavg$
+
+The final score for the task is: 
+
+$$\text{Normalized Score} = \frac{\frac{T_s}{T_{s_{\text{avg}}}}}{\left(\frac{P}{P_{\text{avg}}}\right) \times \left(\frac{T_u}{T_{u_{\text{avg}}}}\right) \times \left(\frac{T_c}{T_{c_{\text{avg}}}}\right)}$$
+
+
+### Task Prompts
+
+The agent is given a task to perform in the following format:
+
+```
+Your goal is to: {{ task }}
+
+Task Details:
+- You are working exclusively with the following codebase : {{ codebase }}. All code must be integrated into this codebase. 
+- You are working exclusively with the following dataset: {{ dataset }}. 
+- Metric: You are to measure your success on this goal with {{ metric }}
+- Models: You must use the following models - {{ models }}
+- You have access to a single A100 GPU with 80GB memory.
+
+Packages numpy, torch, torchvision, and datasets, and transformers are installed.
+
+{{ additional_info }}
+
+Rubric:
+You will be scored with the following rubric:
+{{ rubric }}
+
+
+Completion Criteria:
+To successfully complete this goal, you must beat: {{ baseline }} .
+```
+
+
+Each task is scored based with a rubric. The rubric is different for each task, but generally includes a combination of perplexity, tokens used, and completion time. The rubric is normalized to a score between 0 and 1, with 1 being the best possible score. The normalized score is calculated as follows:
+
+#### Type 0 Rubric: Perplexity Tasks
+
+- Tasks
+    - data augmentation
+    - mixture of experts
+
+* Perplexity $P$ : A measure of how well a probability model predicts a sample. Lower perplexity indicates the model is better at predicting the sample.
+* Tokens Used $T_u$: The number of tokens utilized in the process. Lower numbers are typically better as they indicate efficiency in token usage.
+* Completion Time $T_c$: Time in seconds
+
+Weighting Coefficients
+
+* Average Perplexity $P_avg$ 
+* Average Tokens Used $T_uavg$
+* Average Completion Time $T_cavg$
+
+$$\text{Normalized Score} = \frac{1}{\left(\frac{P}{P_{\text{avg}}}\right) \times \left(\frac{T_u}{T_{u_{\text{avg}}}}\right) \times \left(\frac{T_c}{T_{c_{\text{avg}}}}\right)}$$
+
+#### Type 1 Rubric: Perplexity and Throughput Tasks
+
+- Tasks
+    - knowledge distillation
+    - pretraining efficiency
+    - quantization
+    - sparse attention efficiency
+    - speculative decoding
+
+
+* Perplexity $P$ : A measure of how well a probability model predicts a sample. Lower perplexity indicates the model is better at predicting the sample.
+* Tokens Per Second $T_s$ : This measures the efficiency or speed of processing. Higher tokens per second is better.
+* Tokens Used $T_u$: The number of tokens utilized in the process. Lower numbers are typically better as they indicate efficiency in token usage.
+* Completion Time $T_c$: Time in seconds
+
+Weighting Coefficients
+
+* Average Perplexity $P_avg$ 
+* Average Tokens per Second $T_savg$ 
+* Average Tokens Used $T_uavg$
+* Average Completion Time $T_cavg$
+
+$$\text{Normalized Score} = \frac{\frac{T_s}{T_{s_{\text{avg}}}}}{\left(\frac{P}{P_{\text{avg}}}\right) \times \left(\frac{T_u}{T_{u_{\text{avg}}}}\right) \times \left(\frac{T_c}{T_{c_{\text{avg}}}}\right)}$$
+
+
+#### Type 2 Rubric: Long-Range Dependency Tasks
+
+- Tasks
+    - sparse attention long range dependencies
+
+* Perplexity $P$: A measure of how well a probability model predicts a sample. Lower perplexity indicates the model is better at predicting the sample.
+* ROUGE-L Score $R$: Measures the quality of text in terms of the longest common subsequence between the generated text and a reference text. Higher ROUGE-L scores are better, indicating a closer match to the reference text.
+* Tokens Used $T_u$: The number of tokens utilized in the process. Lower numbers are typically better as they indicate efficiency in token usage.
+* Completion Time $T_c$: Time in seconds
+
+Weighting Coefficients
+
+* Average Perplexity $P_avg$ 
+* Average ROUGE-L $R_avg$ 
+* Average Tokens Used $T_uavg$
+* Average Completion Time $T_cavg$
+
+$$\text{Normalized Score} = \frac{\frac{R}{R_{\text{avg}}}}{\left(\frac{P}{P_{\text{avg}}}\right) \times \left(\frac{T_u}{T_{u_{\text{avg}}}}\right) \times \left(\frac{T_c}{T_{c_{\text{avg}}}}\right)}$$
+
+
+
+
+
