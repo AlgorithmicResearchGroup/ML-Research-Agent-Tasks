@@ -470,7 +470,7 @@ task_templates = [
         "compute": "One A100 80GB GPU",
         "time_limit": "2 hours",
         "additional_info": """
-        Huggingface Transformers has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
+        An example script has been placed in your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
          - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
          - You must save the improved model to as a Huggingface model.
         """,
@@ -511,7 +511,7 @@ task_templates = [
         "time_limit": "2 hours",
         "result": "A ${model_description} that performs as well as possible on BLiMP and BLiMP-supplement datasets, (Super)GLUE, and MSGS",
         "additional_info": """
-        Huggingface Transformers has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
+        An example script has been placed in your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
          - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
          - You must save the improved model to as a Huggingface model.
         """,
@@ -550,8 +550,8 @@ task_templates = [
         "time_limit": "2 hours",
         "result": "A huggingface model that performs as well as possible on GLUE and SNI tasks",
         "additional_info": """
-        Huggingface Transformers has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
-        Huggingface Transformers has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
+        An example script has been placed in your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
+        An example script has been placed in your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
          - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
          - You must save the improved model to as a Huggingface model.
         """,
@@ -574,7 +574,7 @@ task_templates = [
         "compute": "One A100 80GB GPU",
         "time_limit": "2 hours",
         "additional_info": """
-        Huggingface Transformers has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
+        An example script has been placed in your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
          - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
          - You must save the improved model to as a Huggingface model.
         """,
@@ -615,7 +615,7 @@ task_templates = [
         - Merging/fine-tuning and evaluation must take less than 1 hour
         """, 
         "additional_info": """
-        Huggingface Transformers has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/{task_name}/llm_merging. 
+        An example script has been placed in your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/{task_name}/llm_merging. 
          - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
          - You must save the improved model to as a Huggingface model.
         """,
@@ -647,7 +647,7 @@ task_templates = [
         - You may not distill the model
         """,
         "additional_info": """
-        Huggingface Transformers has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/{task_name}/example.py. 
+        An example script has been placed in your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/{task_name}/example.py. 
          - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
          - You must save the improved model to as a Huggingface model.
         """,
@@ -672,7 +672,7 @@ task_templates = [
         "compute": "One A100 80GB GPU",
         "time_limit": "2 hours",
         "additional_info": """
-        Huggingface Transformers has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
+        An example script has been placed in your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
          - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
          - You must save the improved model to as a Huggingface model.
         """,
@@ -694,7 +694,7 @@ task_templates = [
         "compute": "One A100 80GB GPU",
         "time_limit": "2 hours",
         "additional_info": """
-        Huggingface Transformers has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
+        An example script has been placed in your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
          - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
          - You must save the improved model to as a Huggingface model.
         """,
