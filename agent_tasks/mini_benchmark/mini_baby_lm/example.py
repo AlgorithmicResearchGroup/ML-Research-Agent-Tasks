@@ -63,3 +63,4 @@ trainer = Trainer(
 )
 
 # Start training
+trainer.train()

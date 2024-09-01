@@ -444,7 +444,7 @@ task_templates = [
             - Non-integer solutions: allowed error of no more than two decimal places
             - An example is considered correct only if all numerical answers provided are correct
             """,
-            "additional_info": """None""", 
+            "additional_info": """None""",  
             "formula": "None",
         },
         #////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -466,16 +466,13 @@ task_templates = [
                 - LIMA
         """,
         "models": "${model_description}",
-        "libraries": "nanoGPT",
+        "libraries": "Huggingface Transformers",
         "compute": "One A100 80GB GPU",
         "time_limit": "2 hours",
         "additional_info": """
-        NanoGPT has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/nanoGPT. 
-         - You can train a base model with the following command: "python /full/path/to/train.py /full/path/to/config/finetune.py"
-         - Settings for the model are in config/finetune.py. 
-         - A tokenized dataset is in the data directory.
+        Huggingface Transformers has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
          - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
-         - You must save the improved model to file.
+         - You must save the improved model to as a Huggingface model.
         """,
         "rules": """
             - You may not train on the HELM benchmark directly. It is for evaluation only.
@@ -489,7 +486,7 @@ task_templates = [
     },
     {
         "name": "mini_baby_lm",
-        "task": """Train a ${model_description} on a pretraining corpus of approximately 10M words (Strict-Small). Optimize for performance on the BLiMP and BLiMP-supplement datasets, (Super)GLUE, and MSGS. You have 2 hours to complete the task.
+        "task": """Train the best possible ${model_description} on a pretraining corpus of approximately 10M words (Strict-Small).
         """,
         "dataset": """You can load the dataset with load_dataset(AlgorithmicResearchGroup/babylm)""",
         "dataset_shape": """
@@ -509,18 +506,14 @@ task_templates = [
         })
         """,
         "models": "${model_description}",
-        "libraries": "nanoGPT",
+        "libraries": "Huggingface Transformers",
         "compute": "One A100 80GB GPU",
         "time_limit": "2 hours",
         "result": "A ${model_description} that performs as well as possible on BLiMP and BLiMP-supplement datasets, (Super)GLUE, and MSGS",
         "additional_info": """
-        NanoGPT has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/nanoGPT. 
-         - You can train a base model with the following command: "python /full/path/to/train.py /full/path/to/config/wiki.py"
-         - The config/wiki.py file is set up to train a ${total_params} parameter model with a batch size of ${batch_size} for ${max_iters} epochs.
-         - Settings for the model are in config/wiki.py. 
-         - A tokenized dataset is in the data directory.
+        Huggingface Transformers has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
          - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
-         - You must save the improved model to file.
+         - You must save the improved model to as a Huggingface model.
         """,
         "rules": """
             - You may not train on BLiMP, BLiMP-supplement, (Super)GLUE, or MSGS directly. They are for evaluation only.
@@ -552,18 +545,15 @@ task_templates = [
         })
         """,
         "models": "${model_description}",
-        "libraries": "nanoGPT",
+        "libraries": "Huggingface Transformers",
         "compute": "one A100 80GB GPU",
         "time_limit": "2 hours",
         "result": "A huggingface model that performs as well as possible on GLUE and SNI tasks",
         "additional_info": """
-        NanoGPT has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/nanoGPT. 
-         - You can train a base model with the following command: "python /full/path/to/train.py /full/path/to/config/wiki.py"
-         - The config/wiki.py file is set up to train a ${total_params} parameter model with a batch size of ${batch_size} for ${max_iters} epochs.
-         - Settings for the model are in config/wiki.py. 
-         - A tokenized dataset is in the data directory.
+        Huggingface Transformers has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
+        Huggingface Transformers has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
          - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
-         - You must save the improved model to file.
+         - You must save the improved model to as a Huggingface model.
         """,
         "evaluation": """
         Performance on GLUE and SNI 
@@ -580,16 +570,13 @@ task_templates = [
         "metric": "Delta Tokens Per Second, Delta Perplexity",
         "dataset": "EleutherAI/wikitext_document_level, wikitext-103-v1",
         "models": "${model_description}",
-        "libraries": "nanoGPT",
+        "libraries": "Huggingface Transformers",
         "compute": "One A100 80GB GPU",
         "time_limit": "2 hours",
         "additional_info": """
-        NanoGPT has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/nanoGPT. 
-         - You can sample the provided base model with the following command: "python sample.py --out_dir=out-shakespeare-char --device=cpu"
-         - Settings for the model are in config/wiki.py. 
-         - A tokenized dataset is in the data directory.
+        Huggingface Transformers has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
          - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
-         - You must save the improved model to file.
+         - You must save the improved model to as a Huggingface model.
         """,
         "rules": """
         - You must use the supplied model. You  must perform quantization.
@@ -619,7 +606,7 @@ task_templates = [
             })
         """, 
         "models": "${model_description}",
-        "libraries": "nanoGPT",
+        "libraries": "Huggingface Transformers",
         "compute": "one A100 80GB GPU",
         "time_limit": "24 hours",
         "result": "A merged model that performs as well as possible on CosmosQA and XSUM datasets",
@@ -628,12 +615,9 @@ task_templates = [
         - Merging/fine-tuning and evaluation must take less than 1 hour
         """, 
         "additional_info": """
-        NanoGPT has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/nanoGPT. 
-         - You can train a base model with the following command: "python /full/path/to/train.py /full/path/to/config/wiki.py"
-         - You can fine-tune a model with the following command: "python /full/path/to/train.py /full/path/to/config/finetune.py"
-         - Settings for the model are in config/wiki.py. 
+        Huggingface Transformers has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/{task_name}/llm_merging. 
          - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
-         - You must save the improved model to file.
+         - You must save the improved model to as a Huggingface model.
         """,
         "evaluation": """
         - Normalized balanced classification accuracy
@@ -653,7 +637,7 @@ task_templates = [
         "starter_code": "https://github.com/TianjinYellow/EdgeDeviceLLMCompetition-Starting-Kit?tab=readme-ov-file#submission-requirements",
         "dataset": "None - you may not perform training, only compression",
         "models": "${model_description}",
-        "libraries": "nanoGPT",
+        "libraries": "Huggingface Transformers",
         "compute": "one A100 80GB GPU",
         "time_limit": "2 hours",
         "result": "A compressed model that performs as well as possible on a subset of the OpenCompass benchmark",
@@ -663,12 +647,9 @@ task_templates = [
         - You may not distill the model
         """,
         "additional_info": """
-        NanoGPT has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/nanoGPT. 
-         - You can train a base model with the following command: "python /full/path/to/train.py /full/path/to/config/wiki.py"
-         - You can fine-tune a model with the following command: "python /full/path/to/train.py /full/path/to/config/finetune.py"
-         - Settings for the model are in config/wiki.py. 
+        Huggingface Transformers has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/{task_name}/example.py. 
          - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
-         - You must save the improved model to file.
+         - You must save the improved model to as a Huggingface model.
         """,
         "evaluation": """
         Models are evaluated on a subset of the OpenCompass benchmark. Evaluation datasets include CommonsenseQA, BIG-Bench Hard, GSM8K, LongBench, HumanEval, TruthfulQA, CHID. 
@@ -687,16 +668,13 @@ task_templates = [
         "metric": "MMLU high_school Mathematics, MMLU college Mathematics, and MathQA",
         "dataset": "Any dataset of your choice",
         "models": "${model_description}",
-        "libraries": "nanoGPT",
+        "libraries": "Huggingface Transformers",
         "compute": "One A100 80GB GPU",
         "time_limit": "2 hours",
         "additional_info": """
-        NanoGPT has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/nanoGPT. 
-         - You can train a base model with the following command: "python /full/path/to/train.py /full/path/to/config/wiki.py"
-         - You can fine-tune a model with the following command: "python /full/path/to/train.py /full/path/to/config/finetune.py"
-         - Settings for the model are in config/wiki.py. 
+        Huggingface Transformers has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
          - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
-         - You must save the improved model to file.
+         - You must save the improved model to as a Huggingface model.
         """,
         "evaluation": """
             - MMLU high_school Mathematics,
@@ -710,18 +688,15 @@ task_templates = [
         "task": """Train a model given the repository provided. Get a validation loss below 4.0. 
         """,
         "metric": "Validation Loss",
-        "dataset": "The processed dataset a train.bin and test.bin file located in /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/nanoGPT/data/wiki/",
+        "dataset": "The processed dataset a train.bin and test.bin file located in /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py/data/wiki/",
         "models": "the default model",
-        "libraries": "nanoGPT",
+        "libraries": "Huggingface Transformers",
         "compute": "One A100 80GB GPU",
         "time_limit": "2 hours",
         "additional_info": """
-        NanoGPT has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/nanoGPT. 
-         - You can train a base model with the following command: "python /full/path/to/train.py /full/path/to/config/wiki.py"
-         - Settings for the model are in config/wiki.py. 
-         - A tokenized dataset is in the data directory.
+        Huggingface Transformers has been cloned to your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
          - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
-         - You must save the improved model to file.
+         - You must save the improved model to as a Huggingface model.
         """,
         "rubric": [
             "The model is trained and a validation loss is reported. The validation loss < 4.0",

@@ -71,9 +71,6 @@ def get_task(directory: str, benchmark: str, task_name: str) -> Dict[str, Any]:
 
     # Execute the task (this is a placeholder - replace with actual task execution)
     # try:
-        # This is where you would actually execute the task
-        # For now, we'll just return the rendered prompt
-        #result = {"rendered_prompt": rendered_prompt}
         
     model_size = 'x-small'
     tasks = [
@@ -84,11 +81,6 @@ def get_task(directory: str, benchmark: str, task_name: str) -> Dict[str, Any]:
         for task in retreive_tasks(model_size)
     ]
     tasks = {t["name"]: t for t in tasks}
-    
-    #task = tasks[task_name]
-    #print(tasks)
-    #result = next(t for t in tasks if 'mini_baby_lm' in t)
-    #result = [t for t in tasks if "new2" in t][0]
     task = tasks[task_name]
         
         

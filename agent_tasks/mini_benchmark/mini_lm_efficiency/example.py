@@ -29,28 +29,18 @@ train_dataset = tokenized_datasets['train']
 val_dataset = tokenized_datasets['val']
 
 
-# Custom GPT-2 configuration: 6-layer model Very small model
-config = GPT2Config(
-    vocab_size=len(tokenizer),
-    n_positions=256, # block_size
-    n_layer=6,  # Specify 6 layers
-    n_head=6,
-    n_embd=384,
-    dropout=0.2
-)
-
-model = GPT2LMHeadModel(config)
+model = GPT2LMHeadModel.from_pretrained('AlgorithmicResearchGroup/gpt2-xs')
 
 
 # Training arguments
 training_args = TrainingArguments(
-    output_dir='./2_vsmall_256_epoch_1e_3',          # output directory
-    #num_train_epochs=20,              # number of training epochs
+    output_dir='./finetuned_gpt2',          # output directory
+    num_train_epochs=3,              # number of training epochs
     max_steps=5000,
     eval_steps=250,
     seed=142,
-    learning_rate=1e-3,
-    weight_decay=1e-1,
+    learning_rate=5e-5,
+    weight_decay=0.01,
     adam_beta1 = 0.9,
     adam_beta2 = 0.95,
     gradient_accumulation_steps=1,
