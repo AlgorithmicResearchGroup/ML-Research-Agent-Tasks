@@ -8,12 +8,12 @@ from agent_tasks.prompts import retreive_tasks
 
 def get_task(directory: str, benchmark: str, task_name: str) -> Dict[str, Any]:
     """
-    Copy a task from a benchmark to a specified directory, execute it, and return the result.
+    Copy files from a task in a benchmark to a specified directory, execute it, and return the result.
 
     Args:
     directory (str): Target directory path
     benchmark (str): Benchmark type ('mini_benchmark' or 'full_benchmark')
-    task (str): Task name
+    task_name (str): Task name
 
     Returns:
     Dict[str, Any]: A dictionary containing the task result and any additional information
@@ -37,16 +37,17 @@ def get_task(directory: str, benchmark: str, task_name: str) -> Dict[str, Any]:
     # Create the target directory if it doesn't exist
     target_dir.mkdir(parents=True, exist_ok=True)
 
-    # Copy the task directory to the target directory
+    # Copy only the files within the task directory to the target directory
     try:
-        target_task_dir = target_dir / task_name
-        shutil.copytree(str(task_dir), str(target_task_dir))
-        print(f"Successfully copied '{task_name}' from {benchmark} to {directory}")
+        for item in task_dir.iterdir():
+            if item.is_file():
+                shutil.copy2(str(item), str(target_dir))
+        print(f"Successfully copied files from '{task_name}' in {benchmark} to {directory}")
     except Exception as e:
-        return {"error": f"Error copying task: {e}"}
+        return {"error": f"Error copying task files: {e}"}
 
-    # Change to the target task directory
-    os.chdir(str(target_task_dir))
+    # Change to the target directory
+    os.chdir(str(target_dir))
 
     # Load and render the template
     try:
@@ -69,9 +70,7 @@ def get_task(directory: str, benchmark: str, task_name: str) -> Dict[str, Any]:
     except Exception as e:
         return {"error": f"Error rendering template: {str(e)}"}
 
-    # Execute the task (this is a placeholder - replace with actual task execution)
-    # try:
-        
+    # Execute the task
     model_size = 'x-small'
     tasks = [
         {
@@ -82,10 +81,6 @@ def get_task(directory: str, benchmark: str, task_name: str) -> Dict[str, Any]:
     ]
     tasks = {t["name"]: t for t in tasks}
     task = tasks[task_name]
-        
-        
-    # except Exception as e:
-    #     return {"error": f"Error executing task: {e}"}
 
     return task 
 
