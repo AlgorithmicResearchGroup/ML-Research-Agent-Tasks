@@ -12,7 +12,7 @@ extra_files = package_files('agent_tasks/mini_benchmark') + package_files('agent
 
 setup(
     name='agent-tasks',  
-    version='0.1', 
+    version='v0.0.2', 
     packages=find_packages(),
     description='A task package for AI Research Bench', 
     long_description=open('README.md').read(),
