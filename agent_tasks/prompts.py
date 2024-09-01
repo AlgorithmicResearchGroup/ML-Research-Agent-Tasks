@@ -470,8 +470,8 @@ task_templates = [
         "compute": "One A100 80GB GPU",
         "time_limit": "2 hours",
         "additional_info": """
-        An example script has been placed in your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
-         - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
+        An example script called example.py has been placed in your working directory 
+         - You can modify this script or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
         "rules": """
@@ -511,8 +511,8 @@ task_templates = [
         "time_limit": "2 hours",
         "result": "A ${model_description} that performs as well as possible on BLiMP and BLiMP-supplement datasets, (Super)GLUE, and MSGS",
         "additional_info": """
-        An example script has been placed in your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
-         - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
+        An example script called example.py has been placed in your working directory 
+         - You can modify this script or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
         "rules": """
@@ -550,9 +550,8 @@ task_templates = [
         "time_limit": "2 hours",
         "result": "A huggingface model that performs as well as possible on GLUE and SNI tasks",
         "additional_info": """
-        An example script has been placed in your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
-        An example script has been placed in your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
-         - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
+        An example script called example.py has been placed in your working directory 
+         - You can modify this script or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
         "evaluation": """
@@ -574,8 +573,8 @@ task_templates = [
         "compute": "One A100 80GB GPU",
         "time_limit": "2 hours",
         "additional_info": """
-        An example script has been placed in your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
-         - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
+        An example script called example.py has been placed in your working directory 
+         - You can modify this script or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
         "rules": """
@@ -615,8 +614,8 @@ task_templates = [
         - Merging/fine-tuning and evaluation must take less than 1 hour
         """, 
         "additional_info": """
-        An example script has been placed in your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/{task_name}/llm_merging. 
-         - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
+        An example script called llm_merging has been placed in your working directory 
+         - You can modify this script or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
         "evaluation": """
@@ -647,8 +646,8 @@ task_templates = [
         - You may not distill the model
         """,
         "additional_info": """
-        An example script has been placed in your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/{task_name}/example.py. 
-         - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
+        An example script called example.py has been placed in your working directory 
+         - You can modify this script or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
         "evaluation": """
@@ -672,8 +671,8 @@ task_templates = [
         "compute": "One A100 80GB GPU",
         "time_limit": "2 hours",
         "additional_info": """
-        An example script has been placed in your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
-         - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
+        An example script called example.py has been placed in your working directory 
+         - You can modify this script or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
         "evaluation": """
@@ -688,14 +687,14 @@ task_templates = [
         "task": """Train a model given the repository provided. Get a validation loss below 4.0. 
         """,
         "metric": "Validation Loss",
-        "dataset": "The processed dataset a train.bin and test.bin file located in /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py/data/wiki/",
+        "dataset": "The processed dataset a train.bin and test.bin file located in /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py",
         "models": "the default model",
         "libraries": "Huggingface Transformers",
         "compute": "One A100 80GB GPU",
         "time_limit": "2 hours",
         "additional_info": """
-        An example script has been placed in your working directory: /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py. 
-         - You can modify the model and training settings in this file, or the code in any of the other files in the repository. 
+        An example script called example.py has been placed in your working directory 
+         - You can modify this script or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
         "rubric": [
