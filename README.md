@@ -49,19 +49,6 @@ We welcome contributions to the AI Competition Benchmark! Please read our [CONTR
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Citation
-
-If you use this benchmark in your research, please cite:
-
-```
-@article{kenney2024ai,
-  title={AI Competition Benchmark},
-  author={Kenney, Matthew},
-  journal={arXiv preprint arXiv:XXXX.XXXXX},
-  year={2024}
-}
-```
-
 ## Contact
 
-For questions or feedback, please open an issue in this repository or contact [your-email@example.com](mailto:your-email@example.com).
+For questions or feedback, please open an issue in this repository or contact [matt@algorithmicresearchgroup.com](mailto:matt@algorithmicresearchgroup.com).
