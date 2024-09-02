@@ -4,19 +4,21 @@ Your task is to:
 
 Task Details:
 - Your goal is to acheive the best possible score given the rubric below.
-- You are working exclusively with the following dataset on Huggingface Hub: {{ dataset }}. 
-- The dataset has is constructed like this: {{ dataset_shape }}
-- Metric: You are to measure your success on this goal with {{ metric }}
+- You are working exclusively with the following dataset: {{ dataset }}. 
+- The dataset has is constructed like this: 
+
+{{ dataset_shape }}
 - Models: You must use any of the following models - {{ models }}
 - Compute: You have access to a {{ compute }}.
 - Time: You have a maximum time limit of {{ time_limit }}
 - Result: The task should result in {{ result }}
-- Rules: Here are the rules for the task: {{ rules }}
+- Evaluation: You are to measure your success on this goal with {{ evaluation }}
+- Rules: Here are the rules for the task: 
+
+{{ rules }}
 
 Packages numpy, torch, torchvision, and datasets, and transformers are installed.
 
 The output of your research will be evaluated under the following conditions: 
 
 {{additional_info}}
-
-{{formula}}

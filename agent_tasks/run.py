@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Dict, Any
 import subprocess
 from jinja2 import Environment, FileSystemLoader, TemplateNotFound
-from agent_tasks.prompts import retreive_tasks
+from agent_tasks.prompts import retreive_tasks, combine_task_and_model
 
 def get_task(directory: str, benchmark: str, task_name: str) -> Dict[str, Any]:
     """
@@ -72,17 +72,29 @@ def get_task(directory: str, benchmark: str, task_name: str) -> Dict[str, Any]:
 
     # Execute the task
     model_size = 'x-small'
-    tasks = [
-        {
-            "name": task["name"],
-            "prompt": template.render(task),
-        }
-        for task in retreive_tasks(model_size)
-    ]
-    tasks = {t["name"]: t for t in tasks}
+    model_metrics = {
+        "model": model_size,
+        "model_description": "A small language model",  # Add an appropriate description
+        # Add other model metrics as needed
+    }
+    
+    tasks = retreive_tasks(model_size)
+    combined_tasks = combine_task_and_model(tasks, model_metrics)
+    tasks = {t["name"]: t for t in combined_tasks}
+    
+    if task_name not in tasks:
+        return {"error": f"Task '{task_name}' not found in retrieved tasks."}
+    
     task = tasks[task_name]
 
-    return task 
+    # Render the template with the combined task and model information
+    try:
+        rendered_prompt = template.render(task)
+        task["prompt"] = rendered_prompt
+    except Exception as e:
+        return {"error": f"Error rendering template: {str(e)}"}
+
+    return task
 
 # Example usage (can be removed if not needed)
 if __name__ == "__main__":

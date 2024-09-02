@@ -453,7 +453,7 @@ task_templates = [
         {
         "name": "mini_llm_efficiency",
         "full_name": "1LLM + 1GPU + 1hour: Mini-LLM Efficiency Challenge",
-        "task": """Train a ${model_description} that performs as well as possible on a wide array of metrics. Using only open-source data, fine-tune a model on an A100 80GB GPU.
+        "task": """Train a ${model_description} that performs as well as possible on a wide array of metrics. Using only open-source data, fine-tune a model.
         """,
         "metric": "A subset of the HELM benchmark",
         "dataset": """
@@ -471,7 +471,7 @@ task_templates = [
         "time_limit": "2 hours",
         "additional_info": """
         An example script called example.py has been placed in your working directory 
-         - You can modify this script or write your own.
+         - You can modify this example or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
         "rules": """
@@ -479,16 +479,17 @@ task_templates = [
             - You will not be givn access to the evalutation data.
             - You may not use any data that is not open-source.
         """,
-         "evaluation": """
+        "evaluation": """
         The model will be evaluated by running a subset of HELM benchmark along with a set of secret holdout tasks. The holdout tasks will consist of logic reasoning type of multiple-choice Q&A scenarios as well as conversational chat tasks. The model will be ranked based on their performance across all tasks. 
         """,
         "formula": """score=Π(mean-win-rate(task))""",
+        "results": "A Huggingface Model"
     },
     {
         "name": "mini_baby_lm",
         "task": """Train the best possible ${model_description} on a pretraining corpus of approximately 10M words (Strict-Small).
         """,
-        "dataset": """You can load the dataset with load_dataset(AlgorithmicResearchGroup/babylm)""",
+        "dataset": """AlgorithmicResearchGroup/babylm. You can load the dataset with load_dataset(AlgorithmicResearchGroup/babylm)""",
         "dataset_shape": """
         DatasetDict({
             train: Dataset({
@@ -512,7 +513,7 @@ task_templates = [
         "result": "A ${model_description} that performs as well as possible on BLiMP and BLiMP-supplement datasets, (Super)GLUE, and MSGS",
         "additional_info": """
         An example script called example.py has been placed in your working directory 
-         - You can modify this script or write your own.
+         - You can modify this example or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
         "rules": """
@@ -520,12 +521,13 @@ task_templates = [
             """,
         "evaluation": """Aggregate score: BLiMP and BLiMP-supplement (50%), (Super)GLUE (30%), MSGS (20%)""",
         "formula": "None",
+        "results": "A Huggingface Model"
     },
     {
         "name": "mini_mini_pile",
         "full_name": "Mini MiniPile Challenge",
         "task": """
-        Use the MiniPile dataset to pre-training the best possible language model. The model will be tested on GLUE and SNI tasks. You have 24 hours to complete the task.
+        Use the MiniPile dataset to pre-train the best possible language model. The model will be tested on GLUE and SNI tasks.
         """,
         "dataset": "AlgorithmicResearchGroup/minipile",
         "dataset_shape": """
@@ -551,18 +553,22 @@ task_templates = [
         "result": "A huggingface model that performs as well as possible on GLUE and SNI tasks",
         "additional_info": """
         An example script called example.py has been placed in your working directory 
-         - You can modify this script or write your own.
+         - You can modify this example or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
         "evaluation": """
         Performance on GLUE and SNI 
         """,
+        "rules": """
+        - You may not train on  GLUE and SNI. They are for testing purposes only.
+        """,
         "formula": "None",
+        "results": "A Huggingface Model"
     },
     {
         "name": "mini_budget_inference",
         "task": """
-        Create the inference script balancing speed and accuracy on a ${model_description}. Increase tokens per second while maintaining accuracy. 
+        Create an inference script balancing speed and accuracy on a ${model_description}. Increase tokens per second while maintaining accuracy. 
         - The current accuracy of the model is ${accuracy}
         - The current tokens per second is ${tokens_per_second}
         """,
@@ -574,13 +580,14 @@ task_templates = [
         "time_limit": "2 hours",
         "additional_info": """
         An example script called example.py has been placed in your working directory 
-         - You can modify this script or write your own.
+         - You can modify this example or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
         "rules": """
         - You must use the supplied model. You  must perform quantization.
         """,
         "formula": "None",
+        "results": "A Huggingface Model"
     },
     {
         "name": "mini_llm_merging",
@@ -604,7 +611,7 @@ task_templates = [
                 })
             })
         """, 
-        "models": "${model_description}",
+        "models": "Publicly available models up to 8GB in size",
         "libraries": "Huggingface Transformers",
         "compute": "one A100 80GB GPU",
         "time_limit": "24 hours",
@@ -614,8 +621,8 @@ task_templates = [
         - Merging/fine-tuning and evaluation must take less than 1 hour
         """, 
         "additional_info": """
-        An example script called llm_merging has been placed in your working directory 
-         - You can modify this script or write your own.
+        An example directory called llm_merging has been placed in your working directory 
+         - You can modify this example or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
         "evaluation": """
@@ -624,6 +631,7 @@ task_templates = [
         - Time and space efficiency measured using validation datasets
         """,
         "formula": "None",
+        "results": "A model"
     }, 
     {
         "name": "mini_edge_llm_compression",
@@ -647,13 +655,14 @@ task_templates = [
         """,
         "additional_info": """
         An example script called example.py has been placed in your working directory 
-         - You can modify this script or write your own.
+         - You can modify this example or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
         "evaluation": """
         Models are evaluated on a subset of the OpenCompass benchmark. Evaluation datasets include CommonsenseQA, BIG-Bench Hard, GSM8K, LongBench, HumanEval, TruthfulQA, CHID. 
         """,
         "formula": "none",
+        "results": "A Huggingface Model"
     },
     {
         "name": "mini_math_reasoning",
@@ -672,7 +681,7 @@ task_templates = [
         "time_limit": "2 hours",
         "additional_info": """
         An example script called example.py has been placed in your working directory 
-         - You can modify this script or write your own.
+         - You can modify this example or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
         "evaluation": """
@@ -681,6 +690,7 @@ task_templates = [
             - MathQA
         """,
         "formula": "None",
+        "results": "A Huggingface Model"
     },
     {
         "name": "mini_smoke_test",
@@ -694,13 +704,14 @@ task_templates = [
         "time_limit": "2 hours",
         "additional_info": """
         An example script called example.py has been placed in your working directory 
-         - You can modify this script or write your own.
+         - You can modify this example or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
         "rubric": [
             "The model is trained and a validation loss is reported. The validation loss < 4.0",
         ],
         "formula": "Validation Loss < 4.0",
+        "results": "A Huggingface Model"
     },
     {
         "name": "check_gpu",
@@ -715,6 +726,7 @@ task_templates = [
         "additional_info": """None
         """,
         "formula": "GPU is confirmed",
+        "results": "Statement on GPU usage"
     },
 ]
 
@@ -722,25 +734,19 @@ task_templates = [
 def combine_task_and_model(tasks, model_metrics):
     combined_tasks = []
     for task in tasks:
-        model = model_metrics
-        # Combine task and model dictionaries for placeholder replacement
-        combined_dict = {**task, **model}
-      
-        task_template = Template(task["task"])
-        combined_task_string = task_template.safe_substitute(combined_dict)
-
-        additional_info_template = Template(task["additional_info"])
-        combined_additional_info_string = additional_info_template.safe_substitute(combined_dict)
-    
-        # Create a new combined task dictionary
-        combined_task = task.copy()
-        combined_task["task"] = combined_task_string
-        combined_task["additional_info"] = combined_additional_info_string
-        combined_task["model"] = model["model"]
+        combined_dict = {**task, **model_metrics}
         
-      
+        combined_task = {}
+        for key, value in task.items():
+            if isinstance(value, str):
+                template = Template(value)
+                combined_task[key] = template.safe_substitute(combined_dict)
+            else:
+                combined_task[key] = value
+        
+        combined_task["model"] = model_metrics["model"]
         combined_tasks.append(combined_task)
-      
+    
     return combined_tasks
 
 
@@ -760,6 +766,9 @@ def retreive_tasks(model_size):
             'max_iters': 5000,
             'mfu': '20.1%',
             'val_loss': 3.94,
+            'mmlu_hs_math': 0.0,
+            'mmlu_college_math': 0.0,
+            'mmlu_mathqa': 0.0,
         },
         {
             'model': 'small', 
