@@ -1,6 +1,6 @@
-# AI Competition Benchmark
+# ML Research Benchmark
 
-This repository contains the tasks for AI Competition Benchmark, a benchmarkdesigned to evaluate the capabilities of AI agents in accelerating AI research and development. The benchmark consists of 9 competition-level tasks that span the spectrum of activities typically undertaken by AI researchers.
+This repository contains the tasks for ML Research Benchmark, a benchmarkdesigned to evaluate the capabilities of AI agents in accelerating ML research and development. The benchmark consists of 9 competition-level tasks that span the spectrum of activities typically undertaken by ML researchers.
 
 ## Introduction
 
@@ -43,7 +43,7 @@ print(result['prompt'])
 
 ## Contributing
 
-We welcome contributions to the AI Competition Benchmark! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines on how to submit issues, feature requests, and pull requests.
+We welcome contributions to the ML Research Benchmark! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines on how to submit issues, feature requests, and pull requests.
 
 ## License
 
