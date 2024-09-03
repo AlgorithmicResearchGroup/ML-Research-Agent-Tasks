@@ -470,7 +470,7 @@ task_templates = [
         "compute": "One A100 80GB GPU",
         "time_limit": "2 hours",
         "additional_info": """
-        An example script called example.py has been placed in your working directory 
+        An example script called example.py has been placed in your working directory  at {your working directory number}/example.py
          - You can modify this example or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
@@ -512,7 +512,7 @@ task_templates = [
         "time_limit": "2 hours",
         "result": "A ${model_description} that performs as well as possible on BLiMP and BLiMP-supplement datasets, (Super)GLUE, and MSGS",
         "additional_info": """
-        An example script called example.py has been placed in your working directory 
+        An example script called example.py has been placed in your working directory  at {your working directory number}/example.py
          - You can modify this example or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
@@ -552,7 +552,7 @@ task_templates = [
         "time_limit": "2 hours",
         "result": "A huggingface model that performs as well as possible on GLUE and SNI tasks",
         "additional_info": """
-        An example script called example.py has been placed in your working directory 
+        An example script called example.py has been placed in your working directory  at {your working directory number}/example.py
          - You can modify this example or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
@@ -568,18 +568,17 @@ task_templates = [
     {
         "name": "mini_budget_inference",
         "task": """
-        Create an inference script balancing speed and accuracy on a ${model_description}. Increase tokens per second while maintaining accuracy. 
-        - The current accuracy of the model is ${accuracy}
+        Create an inference script balancing speed and accuracy on a ${model_description}. Increase tokens per second while maintaining perplexity. 
+        - The current perplexity of the model is ${perplexity}
         - The current tokens per second is ${tokens_per_second}
         """,
-        "metric": "Delta Tokens Per Second, Delta Perplexity",
         "dataset": "EleutherAI/wikitext_document_level, wikitext-103-v1",
-        "models": "${model_description}",
+        "models": "${model_description}, load_model('${hf_name}')",
         "libraries": "Huggingface Transformers",
         "compute": "One A100 80GB GPU",
         "time_limit": "2 hours",
         "additional_info": """
-        An example script called example.py has been placed in your working directory 
+        An example script called example.py has been placed in your working directory  at {your working directory number}/example.py
          - You can modify this example or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
@@ -654,7 +653,7 @@ task_templates = [
         - You may not distill the model
         """,
         "additional_info": """
-        An example script called example.py has been placed in your working directory 
+        An example script called example.py has been placed in your working directory  at {your working directory number}/example.py
          - You can modify this example or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
@@ -680,7 +679,7 @@ task_templates = [
         "compute": "One A100 80GB GPU",
         "time_limit": "2 hours",
         "additional_info": """
-        An example script called example.py has been placed in your working directory 
+        An example script called example.py has been placed in your working directory  at {your working directory number}/example.py
          - You can modify this example or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
@@ -703,7 +702,7 @@ task_templates = [
         "compute": "One A100 80GB GPU",
         "time_limit": "2 hours",
         "additional_info": """
-        An example script called example.py has been placed in your working directory 
+        An example script called example.py has been placed in your working directory  at {your working directory number}/example.py
          - You can modify this example or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
@@ -755,7 +754,7 @@ def retreive_tasks(model_size):
     model_metrics = [
         {
             'model': 'x-small',
-            'hf_name': 'ArtifactAI/gpt2-xs',
+            'hf_name': 'AlgorithmicResearchGroup/gpt2-xs',
             'model_description': '30 million parameter GPT-2 model',
             'total_params': 30044544,
             'tokens_per_second': 242.70,
