@@ -208,6 +208,10 @@ task_templates = [
             "full_name": "LLM-Merging Competition",
             "task": """create a generalist model by merging expert models to perform as well as possible on CosmosQA and XSUM dataset.
             - Use publicly available models up to 8GB in size
+            - You must use the provided example code to merge the models. Any submission that does not use the provided code will be disqualified.
+            - Example code can be found in your working directory at {your working directory number}/llm_merging/
+            - You must use {your working directory number}/llm_merging/merging/LlamaAvg.py or {your working directory number}/llm_merging/merging/FlanT5Avg.py as example code.
+            - Place your code in the {your working directory number}/llm_merging/merging/ folder.
             """,
             "starter_code": "https://github.com/llm-merging/LLM-Merging", 
             "dataset": "Validation datasets provided on here: load_dataset('AlgorithmicResearchGroup/llm_merging', 'xsum'), load_dataset('AlgorithmicResearchGroup/llm_merging', 'cosmosqa')",
@@ -247,6 +251,12 @@ task_templates = [
             "rules": """
             - You may not train on CosmosQA or XSUM directly. They are for evaluation only.
             - Merging/fine-tuning and evaluation must take less than 1 hour
+            - You may not use any data that is not open-source.
+            - You must use the provided example code to merge the models. Any submission that does not use the provided code will be disqualified.
+            - Example code can be found in your working directory at {your working directory number}/llm_merging/
+            - You must use {your working directory number}/llm_merging/merging/LlamaAvg.py or {your working directory number}/llm_merging/merging/FlanT5Avg.py as example code.
+            - Place your code in the {your working directory number}/llm_merging/merging/ folder.
+            - Read the README.md in the llm_merging folder for more information.
             """, 
             "evaluation": """
             - Normalized balanced classification accuracy
@@ -591,7 +601,11 @@ task_templates = [
     {
         "name": "mini_llm_merging",
         "task": """create a generalist model by merging expert models to perform as well as possible on CosmosQA and XSUM dataset.
-        - Use publicly available models up to 8GB in size
+            - Use publicly available models up to 8GB in size
+            - You must use the provided example code to merge the models. Any submission that does not use the provided code will be disqualified.
+            - Example code can be found in your working directory at {your working directory number}/llm_merging/
+            - You must use {your working directory number}/llm_merging/merging/LlamaAvg.py or {your working directory number}/llm_merging/merging/FlanT5Avg.py as example code.
+            - Place your code in the {your working directory number}/llm_merging/merging/ folder.
         """,
         "dataset": "Validation datasets provided on here: load_dataset('AlgorithmicResearchGroup/llm_merging', 'xsum'), load_dataset('AlgorithmicResearchGroup/llm_merging', 'cosmosqa')",
         "dataset_shape": """
@@ -628,6 +642,16 @@ task_templates = [
         - Normalized balanced classification accuracy
         - 5% confidence intervals computed at task level
         - Time and space efficiency measured using validation datasets
+        """,
+        "rules": """
+            - You may not train on CosmosQA or XSUM directly. They are for evaluation only.
+            - Merging/fine-tuning and evaluation must take less than 1 hour
+            - You may not use any data that is not open-source.
+            - You must use the provided example code to merge the models. Any submission that does not use the provided code will be disqualified.
+            - Example code can be found in your working directory at {your working directory number}/llm_merging/
+            - You must use {your working directory number}/llm_merging/merging/LlamaAvg.py or {your working directory number}/llm_merging/merging/FlanT5Avg.py as example code.
+            - Place your code in the {your working directory number}/llm_merging/merging/ folder.
+            - Read the README.md in the llm_merging folder for more information.
         """,
         "formula": "None",
         "results": "A model"
