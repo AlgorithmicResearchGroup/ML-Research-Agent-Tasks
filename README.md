@@ -33,7 +33,7 @@ This function will copy the task to the specified path and return a dictionary w
 ## Example Usage
 
 ```python
-from agent_tasks.run import get_task
+from agent_tasks import get_task
 
 # Example usage
 result = get_task("./", "mini_benchmark", "mini_baby_lm")
