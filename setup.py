@@ -14,7 +14,7 @@ setup(
     name='agent-tasks',  
     version='v0.1.91', 
     packages=find_packages(),
-    description='A task package for AI Research Bench', 
+    description='A task package for ML Research Bench', 
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     package_data={
@@ -25,7 +25,7 @@ setup(
     author='Algorithmic Research Group',  
     author_email='matt@algorithmicresearchgroup.com', 
     keywords='tasks, agent, benchmark',
-    url='http://github.com/ArtifactAI/agent-tasks',
+    url='http://github.com/AlgorithmicResearchGroup/agent-tasks',
     entry_points={
         'console_scripts': [
             'agent-tasks-run=agent_tasks.run:main',
