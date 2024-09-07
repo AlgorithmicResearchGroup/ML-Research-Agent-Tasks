@@ -1,9 +1,6 @@
 # MiniPile Challenge
 
-The MiniPile Challenge focuses on data-efficient language model pre-training using a 6GB subset of The Pile corpus. Participants must pre-train language models on this dataset, which contains at most 1M documents. The evaluation involves tasks from GLUE and SNI benchmarks. Baseline models include BERT-Base and T5v1.1-Base. The challenge aims to achieve comparable downstream performance to models trained on much larger datasets. While not strictly enforced, the reference hardware setup is a single NVIDIA RTX 3090 GPU.
-
-
-## MiniPile Challenge: Detailed Rules and Guidelines
+The MiniPile Challenge focuses on data-efficient language model pre-training using a 6GB subset of The Pile corpus. Participants must pre-train language models on this dataset, which contains at most 1M documents. The evaluation involves tasks from GLUE and SNI benchmarks. Baseline models include BERT-Base and T5v1.1-Base. The challenge aims to achieve comparable downstream performance to models trained on much larger datasets.
 
 ### Participation Requirements
 
@@ -37,7 +34,7 @@ The MiniPile Challenge focuses on data-efficient language model pre-training usi
 * BERT-Base (MLM objective)
 * T5v1.1-Base (span-corrupting MLM objective)
 
-1. Scoring:
+### Scoring:
 
 * Compare performance to models pre-trained on much larger datasets
 * Goal is to achieve reasonable downstream performance with only small drops
@@ -49,4 +46,9 @@ The MiniPile Challenge focuses on data-efficient language model pre-training usi
 * T5v1.1-Base pre-training: 21 hours
 * Fine-tuning times: 2-3 hours
 
-Note: The challenge itself does not impose specific hardware constraints; these are just the specifications used in the paper's experiments.
+* 1 A100 80GB GPU
+* 80GB of RAM
+* 500GB of Disk
+
+### Time Constraints
+* 24 Hour Time Limit
