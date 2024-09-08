@@ -1,2 +1,0 @@
-[console_scripts]
-agent-tasks-run = agent_tasks.run:main
