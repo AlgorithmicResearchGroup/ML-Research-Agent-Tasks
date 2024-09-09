@@ -167,7 +167,7 @@ task_templates = [
             "formula": "TWE = (accuracy^2) / inference_time (in minutes)",
         },
         {
-            "name": "budget_inference",
+            "name": "budget_model_inference",
             "full_name": "Budgeted Inference Challenge",
             "task": """create the inference script balancing speed and accuracy for UltraMNIST digits with limited GPU memory and inference time.
             """,
@@ -339,7 +339,7 @@ task_templates = [
             "formula": "None",
         },
         {
-            "name": "math_reasoning_autoformalization",
+            "name": "math_reasoning",
             "full_name": "ICML 2024 Challenges on Automated Math Reasoning: Track 1-1 Autoformalization",
             "task": """A model that, given a problem statement and proof in natural language, generates the corresponding formal statement and proof in Lean 3
             """,
@@ -375,86 +375,6 @@ task_templates = [
             - Pass rate by Lean 3 compiler
             """,
             "additional_info": """None""", 
-            "formula": "None",
-        },
-        {
-            "name": "math_reasoning_autoinformalization",
-            "full_name": "ICML 2024 Challenges on Automated Math Reasoning: Track 1-2 Autoinformalization",
-            "task": """A model that, given a formal statement and proof in Lean 3, generate the corresponding natural language statement and proof
-            """,
-            "dataset": "load_dataset('AlgorithmicResearchGroup/math_reasoning_autoinformalization_track_1_2', 'train'), load_dataset('AlgorithmicResearchGroup/math_reasoning_autoinformalization_track_1_2', 'train_label')",
-            "models": """
-            - Mistral-7B-Instrcut-v0.2
-            - Llama-2-7b-chat
-            - Any other open source model
-            """,
-            "dataset_shape": """
-            train:
-            DatasetDict({
-                train: Dataset({
-                    features: ['name', 'formal_proof'],
-                    num_rows: 4866
-                })
-            })
-            
-            train_label:
-            DatasetDict({
-                train: Dataset({
-                    features: ['name', 'informal_statement', 'informal_proof'],
-                    num_rows: 4866
-                })
-            })
-                
-            """,
-            "libraries": "Huggingface Transformers",
-            "compute": "one A100 80GB GPU",
-            "time_limit": "24 hours",
-            "evaluation": """
-            - ROUGE-L score
-            - BLEU score
-            - Pass rate by Lean 3 compiler
-            """,
-            "additional_info": """None""", 
-            "formula": "None",
-        },
-        {
-            "name": "math_reasoning_automated_problem_solving_with_code",
-            "full_name": "ICML 2024 Challenges on Automated Math Reasoning: Track 3 - Automated Optimization Problem-Solving with Code",
-            "task": """A model that, given an optimization problem in natural language, understands the problem, solves the optimization objective, and derives the corresponding results in the given dataset
-            """,
-            "dataset": "load_dataset('AlgorithmicResearchGroup/math_reasoning_automated_problem_solving_with_code_track_3', 'train'), load_dataset('AlgorithmicResearchGroup/math_reasoning_automated_problem_solving_with_code_track_3', 'test')",
-            "dataset_shape": """
-            train:
-            DatasetDict({
-                train: Dataset({
-                    features: ['id', 'question', 'code', 'results'],
-                    num_rows: 999
-                })
-            })
-            
-            test: 
-            DatasetDict({
-                train: Dataset({
-                    features: ['id', 'question', 'results'],
-                    num_rows: 421
-                })
-            })
-            """, 
-            "models": """
-            - Mistral-7B-Instrcut-v0.2
-            - Llama-2-7b-chat
-            - Any other open source model
-            """,
-            "libraries": "Huggingface Transformers",
-            "compute": "one A100 80GB GPU",
-            "time_limit": "24 hours",
-            "evaluation": """
-            - Answer accuracy
-            - Integer solutions: must be exactly the same as ground truth
-            - Non-integer solutions: allowed error of no more than two decimal places
-            - An example is considered correct only if all numerical answers provided are correct
-            """,
-            "additional_info": """None""",  
             "formula": "None",
         },
         #////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
