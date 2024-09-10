@@ -48,7 +48,7 @@ task_templates = [
             "starter_code": "https://github.com/llm-efficiency-challenge/neurips_llm_efficiency_challenge",
             "compute": "One A100 40GB GPU, 128GB of RAM, 500GB of Disk",
             "time_limit": "24 hours",
-            "result": "A huggingface model that performs as well as possible on a subset of the HELM benchmark",
+            "result": "A huggingface model that performs as well as possible on a subset of the MMLU benchmark",
             "rules": """
             - You may not train on the MMLU benchmark directly. It is for evaluation only.
             - You will not be givn access to the evalutation data.
@@ -89,7 +89,7 @@ task_templates = [
                 })
             })
             """,
-            "models": "Any trasformer model",
+            "models": "Any model of your choosing",
             "starter_code": "https://github.com/babylm/evaluation-pipeline-2024",
             "libraries": "Huggingface Transformers",
             "compute": "One A100 40GB GPU, 128GB of RAM, 500GB of Disk",
@@ -408,6 +408,8 @@ task_templates = [
         },
         #////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #   MINI-ML Agent Competition 
+        #   8 hour time limit
+        #   Small Models
         #////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////       
         {
         "name": "mini_llm_efficiency",
@@ -427,22 +429,23 @@ task_templates = [
         "models": "${model_description}",
         "libraries": "Huggingface Transformers",
         "compute": "One A100 40GB GPU",
-        "time_limit": "2 hours",
+        "time_limit": "8 hours",
         "additional_info": """
         An example script called example.py has been placed in your working directory  at {your working directory number}/example.py
          - You can modify this example or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
         "rules": """
-            - You may not train on the HELM benchmark directly. It is for evaluation only.
+            - You may not train on the MMLU benchmark directly. It is for evaluation only.
             - You will not be givn access to the evalutation data.
             - You may not use any data that is not open-source.
+            - Training should be done on a single GPU.
         """,
         "evaluation": """
         You may run the following command to evaluate your model:
         python run_eval.py --model <path_to_your_model> --task <task_name>
         """,
-        "formula": """score=Π(mean-win-rate(task))""",
+        "formula": """None""",
         "results": "A Huggingface Model"
     },
     {
@@ -469,7 +472,7 @@ task_templates = [
         "models": "${model_description}",
         "libraries": "Huggingface Transformers",
         "compute": "One A100 40GB GPU",
-        "time_limit": "2 hours",
+        "time_limit": "8 hours",
         "result": "A ${model_description} that performs as well as possible on BLiMP and BLiMP-supplement datasets, (Super)GLUE, and MSGS",
         "additional_info": """
         An example script called example.py has been placed in your working directory  at {your working directory number}/example.py
@@ -512,7 +515,7 @@ task_templates = [
         "models": "${model_description}",
         "libraries": "Huggingface Transformers",
         "compute": "one A100 40GB GPU",
-        "time_limit": "2 hours",
+        "time_limit": "8 hours",
         "result": "A huggingface model that performs as well as possible on GLUE and SNI tasks",
         "additional_info": """
         An example script called example.py has been placed in your working directory  at {your working directory number}/example.py
@@ -540,7 +543,7 @@ task_templates = [
         "models": "${model_description}, load_model('${hf_name}')",
         "libraries": "Huggingface Transformers",
         "compute": "One A100 40GB GPU",
-        "time_limit": "2 hours",
+        "time_limit": "8 hours",
         "additional_info": """
         An example script called example.py has been placed in your working directory  at {your working directory number}/example.py
          - You can modify this example or write your own.
@@ -626,7 +629,7 @@ task_templates = [
         "models": "${model_description}",
         "libraries": "Huggingface Transformers",
         "compute": "one A100 40GB GPU",
-        "time_limit": "2 hours",
+        "time_limit": "8 hours",
         "result": "A compressed model that performs as well as possible on a subset of the OpenCompass benchmark",
         "rules": """
         - You must perform compression only, no training is allowed
@@ -659,7 +662,7 @@ task_templates = [
         "models": "${model_description}",
         "libraries": "Huggingface Transformers",
         "compute": "One A100 40GB GPU",
-        "time_limit": "2 hours",
+        "time_limit": "8 hours",
         "additional_info": """
         An example script called example.py has been placed in your working directory  at {your working directory number}/example.py
          - You can modify this example or write your own.
@@ -681,7 +684,7 @@ task_templates = [
         "models": "the default model",
         "libraries": "Huggingface Transformers",
         "compute": "One A100 40GB GPU",
-        "time_limit": "2 hours",
+        "time_limit": "8 hours",
         "additional_info": """
         An example script called example.py has been placed in your working directory  at {your working directory number}/example.py
          - You can modify this example or write your own.
@@ -702,7 +705,7 @@ task_templates = [
         "models": "None",
         "libraries": "None",
         "compute": "One A100 40GB GPU",
-        "time_limit": "2 hours",
+        "time_limit": "8 hours",
         "additional_info": """None
         """,
         "formula": "GPU is confirmed",
