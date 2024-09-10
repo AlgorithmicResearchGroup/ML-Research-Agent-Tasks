@@ -226,7 +226,7 @@ task_templates = [
         {
             "name": "llm_merging",
             "full_name": "LLM-Merging Competition",
-            "task": """create a generalist model by merging expert models to perform as well as possible on CosmosQA and XSUM dataset.
+            "task": """create a generalist model by merging expert models to perform as well as possible on the MMLU benchmark.
             - Use publicly available models up to 8GB in size
             - You must use the provided example code to merge the models. Any submission that does not use the provided code will be disqualified.
             - Example code can be found in your working directory at {your working directory number}/llm_merging/
@@ -269,7 +269,7 @@ task_templates = [
             "time_limit": "24 hours",
             "result": "A merged model that performs as well as possible on CosmosQA and XSUM datasets",
             "rules": """
-            - You may not train on CosmosQA or XSUM directly. They are for evaluation only.
+            - You may not train on MMLU directly. They are for evaluation only.
             - Merging/fine-tuning and evaluation must take less than 1 hour
             - You may not use any data that is not open-source.
             - You must use the provided example code to merge the models. Any submission that does not use the provided code will be disqualified.
@@ -303,7 +303,7 @@ task_templates = [
             "libraries": "Huggingface Transformers",
             "compute": "one A100 40GB GPU",
             "time_limit": "24 hours",
-            "result": "A compressed huggingface model that performs as well as possible on a subset of the OpenCompass benchmark",
+            "result": "A compressed huggingface model that performs as well as possible on the MMLU benchmark",
             "rules": """
             - You must perform compression only, no training is allowed
             - You may not quantize the model
@@ -348,7 +348,7 @@ task_templates = [
             "libraries": "Huggingface Transformers",
             "compute": "one A100 40GB GPU",
             "time_limit": "24 hours",
-            "result": "A huggingface model that performs as well as possible on a subset of the OpenCompass benchmark",
+            "result": "A huggingface model that performs as well as possible on the MMLU benchmark",
             "rules": """
             - Only C4 and Alpaca datasets allowed for training and fine-tuning
             - You may not use pre-trained LLMs
@@ -401,7 +401,6 @@ task_templates = [
             "evaluation": """
             - ROUGE-L score
             - BLEU score
-            - Pass rate by Lean 3 compiler
             """,
             "additional_info": """None""", 
             "formula": "None",
