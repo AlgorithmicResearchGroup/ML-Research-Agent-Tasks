@@ -5,9 +5,10 @@ task_templates = [
             {
             "name": "llm_efficiency",
             "full_name": "1LLM + 1GPU + 1Day: LLM Efficiency Challenge",
-            "task": """train a model that performs as well as possible on a wide array of metrics. Start with an approved base model. Using only open-source data, fine-tune for a model on an A100 80GB GPU with a CUDA version of 11.7. 
+            "task": """train a model that performs as well as possible on a wide array of metrics. Start with an approved base model. Using only open-source data, fine-tune for a model on an A100 40GB GPU.
+            A training run must complete in 24 hours.
             """,
-            "metric": "A subset of the HELM benchmark",
+            "metric": "A subset of the MMLU benchmark",
             "dataset": """
             You are welcome to use any open sourced dataset. For example:
                 - Databricks-Dolly-15
@@ -45,24 +46,31 @@ task_templates = [
             - UL2
             """,
             "starter_code": "https://github.com/llm-efficiency-challenge/neurips_llm_efficiency_challenge",
-            "compute": "One A100 80GB GPU, 128GB of RAM, 500GB of Disk",
+            "compute": "One A100 40GB GPU, 128GB of RAM, 500GB of Disk",
             "time_limit": "24 hours",
             "result": "A huggingface model that performs as well as possible on a subset of the HELM benchmark",
             "rules": """
-            - You may not train on the HELM benchmark directly. It is for evaluation only.
+            - You may not train on the MMLU benchmark directly. It is for evaluation only.
             - You will not be givn access to the evalutation data.
             - You may not use any data that is not open-source.
+            - Training should be done on a single GPU.
+            - A training must be done in 24 hours.
             """,
             "evaluation": """
-            The model will be evaluated by running a subset of HELM benchmark along with a set of secret holdout tasks. The holdout tasks will consist of logic reasoning type of multiple-choice Q&A scenarios as well as conversational chat tasks. The model will be ranked based on their performance across all tasks. 
+            You may run the following command to evaluate your model:
+            python -m lm_eval --model hf \
+            --model_args pretrained=<path_to_your_model> \
+            --tasks mmlu \
+            --device cuda:0 \
+            --batch_size 8
             """,
             "additional_info": """None""", 
-            "formula": """score=Π(mean-win-rate(task))""",
+            "formula": """None""",
         },
         {
             "name": "baby_lm",
             "full_name": "BabyLM Challenge (Strict-Small)",
-            "task": """train a large language model on a pretraining corpus of approximately 10M words (Strict-Small). Optimize for performance on the BLiMP and BLiMP-supplement datasets, (Super)GLUE, and MSGS. You have 2 hours to complete the task.
+            "task": """train a large language model on a pretraining corpus of approximately 10M words (Strict-Small). Optimize for performance on the BLiMP dataset.
             """,
             "dataset": """You can load the dataset with load_dataset(AlgorithmicResearchGroup/babylm)""",
             "dataset_shape": """
@@ -84,13 +92,20 @@ task_templates = [
             "models": "Any trasformer model",
             "starter_code": "https://github.com/babylm/evaluation-pipeline-2024",
             "libraries": "Huggingface Transformers",
-            "compute": "one A100 80GB GPU",
+            "compute": "One A100 40GB GPU, 128GB of RAM, 500GB of Disk",
             "time_limit": "24 hours",
-            "result": "A huggingface model that performs as well as possible on BLiMP and BLiMP-supplement datasets, (Super)GLUE, and MSGS",
+            "result": "A huggingface model that performs as well as possible on BLiMP",
             "rules": """
-            - You may not train on BLiMP, BLiMP-supplement, (Super)GLUE, or MSGS directly. They are for evaluation only.
+            - You may not train on BLiMP directly. They are for evaluation only.
             """,
-            "evaluation": """Aggregate score: BLiMP and BLiMP-supplement (50%), (Super)GLUE (30%), MSGS (20%)""",
+            "evaluation": """
+            You may run the following command to evaluate your model:
+            python -m lm_eval --model hf \
+            --model_args pretrained=<path_to_your_model> \
+            --tasks blimp \
+            --device cuda:0 \
+            --batch_size 8
+            """,
             "additional_info": """None""", 
             "formula": "None",
         },
@@ -98,7 +113,7 @@ task_templates = [
             "name": "mini_pile",
             "full_name": "MiniPile Challenge",
             "task": """
-            Use the MiniPile dataset to pre-training the best possible language model. The model will be tested on GLUE and SNI tasks. You have 24 hours to complete the task.
+            Use the MiniPile dataset to pre-training the best possible language model. The model will be tested on SuperGLUE. You have 24 hours to complete the task.
             """,
             "dataset": "AlgorithmicResearchGroup/minipile",
             "dataset_shape": """
@@ -119,11 +134,16 @@ task_templates = [
             """,
             "models": "${model_description}",
             "libraries": "Huggingface Transformers",
-            "compute": "one A100 80GB GPU",
+            "compute": "one A100 40GB GPU",
             "time_limit": "24 hours",
-            "result": "A huggingface model that performs as well as possible on GLUE and SNI tasks",
+            "result": "A huggingface model that performs as well as possible on SuperGLUE.",
             "evaluation": """
-            Performance on GLUE and SNI 
+            You may run the following command to evaluate your model:
+            lm_eval --model hf \
+                    --model_args pretrained=<path_to_your_model> \
+                    --tasks super_glue \
+                    --device cuda:0 \
+                    --batch_size 8
             """,
             "additional_info": """None""", 
             "formula": "None",
@@ -153,7 +173,7 @@ task_templates = [
             """,
             "models": "${model_description}",
             "libraries": "Huggingface Transformers",
-            "compute": """One A100 80GB GPU, 
+            "compute": """One A100 40GB GPU, 
             - GPU memory consumption should not exceed 6 GB at any point
             - CPU Cores: 4
             - Training time should not exceed 9 hours,
@@ -190,7 +210,7 @@ task_templates = [
             """, 
             "models": "Any availavle model",
             "libraries": "Huggingface Transformers",
-            "compute": """one A100 80GB GPU
+            "compute": """one A100 40GB GPU
                 -GPU Mem. Limit : 16GB
                 -CPU Cores : 4
                 -RAM : 32GB
@@ -245,7 +265,7 @@ task_templates = [
                 - Various fine-tuned models and adapters are also allowed
             """,
             "libraries": "Huggingface Transformers",
-            "compute": "one A100 80GB GPU",
+            "compute": "one A100 40GB GPU",
             "time_limit": "24 hours",
             "result": "A merged model that performs as well as possible on CosmosQA and XSUM datasets",
             "rules": """
@@ -253,15 +273,18 @@ task_templates = [
             - Merging/fine-tuning and evaluation must take less than 1 hour
             - You may not use any data that is not open-source.
             - You must use the provided example code to merge the models. Any submission that does not use the provided code will be disqualified.
-            - Example code can be found in your working directory at {your working directory number}/llm_merging/
-            - You must use {your working directory number}/llm_merging/merging/LlamaAvg.py or {your working directory number}/llm_merging/merging/FlanT5Avg.py as example code.
-            - Place your code in the {your working directory number}/llm_merging/merging/ folder.
+            - Example code can be found in your working directory
+            - You must use LlamaAvg.py or FlanT5Avg.py as example code.
+            - Place your code in the working directory within the /llm_merging/merging/ folder.
             - Read the README.md in the llm_merging folder for more information.
             """, 
             "evaluation": """
-            - Normalized balanced classification accuracy
-            - 5% confidence intervals computed at task level
-            - Time and space efficiency measured using validation datasets
+            You may run the following command to evaluate your model:
+            lm_eval --model hf \
+                    --model_args pretrained="<path_to_your_model>" \
+                    --tasks mmlu  \
+                    --device cuda:0 \
+                    --batch_size 8
             """,
             "additional_info": """None""", 
             "formula": "None",
@@ -278,7 +301,7 @@ task_templates = [
             "dataset": "None - you may not perform training, only compression",
             "models": "Phi-2",
             "libraries": "Huggingface Transformers",
-            "compute": "one A100 80GB GPU",
+            "compute": "one A100 40GB GPU",
             "time_limit": "24 hours",
             "result": "A compressed huggingface model that performs as well as possible on a subset of the OpenCompass benchmark",
             "rules": """
@@ -287,7 +310,12 @@ task_templates = [
             - You may not distill the model
             """,
             "evaluation": """
-            Models are evaluated on a subset of the OpenCompass benchmark. Evaluation datasets include CommonsenseQA, BIG-Bench Hard, GSM8K, LongBench, HumanEval, TruthfulQA, CHID. 
+            You may run the following command to evaluate your model:
+            lm_eval --model hf \
+                    --model_args pretrained="<path_to_your_model>" \
+                    --tasks mmlu  \
+                    --device cuda:0 \
+                    --batch_size 8
             """,
             "additional_info": """None""", 
             "formula": "none",
@@ -318,7 +346,7 @@ task_templates = [
             """, 
             "models": "${model_description}",
             "libraries": "Huggingface Transformers",
-            "compute": "one A100 80GB GPU",
+            "compute": "one A100 40GB GPU",
             "time_limit": "24 hours",
             "result": "A huggingface model that performs as well as possible on a subset of the OpenCompass benchmark",
             "rules": """
@@ -329,11 +357,12 @@ task_templates = [
             - The model must be submitted in FP16 or FP32 format (no quantization allowed).
             """, 
             "evaluation": """ 
-            Models are evaluated on a subset of the OpenCompass benchmark. Evaluation datasets include CommonsenseQA, BIG-Bench Hard, GSM8K, LongBench, HumanEval, TruthfulQA, CHID.
-            - Performance score on evaluation tasks
-            - Memory requirement (must be <12GB)
-            - Throughput (tokens per second)
-            - Parameter count (for information only)
+            You may run the following command to evaluate your model:
+            lm_eval --model hf \
+                    --model_args pretrained="<path_to_your_model>" \
+                    --tasks mmlu  \
+                    --device cuda:0 \
+                    --batch_size 8
             """,
             "additional_info": """None""", 
             "formula": "None",
@@ -366,7 +395,7 @@ task_templates = [
             - Any other open source model
             """,
             "libraries": "Huggingface Transformers",
-            "compute": "one A100 80GB GPU",
+            "compute": "one A100 40GB GPU",
             "time_limit": "24 hours",
             "result": "A model that generates the corresponding formal statement and proof in Lean 3",
             "evaluation": """
@@ -397,7 +426,7 @@ task_templates = [
         """,
         "models": "${model_description}",
         "libraries": "Huggingface Transformers",
-        "compute": "One A100 80GB GPU",
+        "compute": "One A100 40GB GPU",
         "time_limit": "2 hours",
         "additional_info": """
         An example script called example.py has been placed in your working directory  at {your working directory number}/example.py
@@ -410,7 +439,8 @@ task_templates = [
             - You may not use any data that is not open-source.
         """,
         "evaluation": """
-        The model will be evaluated by running a subset of HELM benchmark along with a set of secret holdout tasks. The holdout tasks will consist of logic reasoning type of multiple-choice Q&A scenarios as well as conversational chat tasks. The model will be ranked based on their performance across all tasks. 
+        You may run the following command to evaluate your model:
+        python run_eval.py --model <path_to_your_model> --task <task_name>
         """,
         "formula": """score=Π(mean-win-rate(task))""",
         "results": "A Huggingface Model"
@@ -438,7 +468,7 @@ task_templates = [
         """,
         "models": "${model_description}",
         "libraries": "Huggingface Transformers",
-        "compute": "One A100 80GB GPU",
+        "compute": "One A100 40GB GPU",
         "time_limit": "2 hours",
         "result": "A ${model_description} that performs as well as possible on BLiMP and BLiMP-supplement datasets, (Super)GLUE, and MSGS",
         "additional_info": """
@@ -449,7 +479,10 @@ task_templates = [
         "rules": """
             - You may not train on BLiMP, BLiMP-supplement, (Super)GLUE, or MSGS directly. They are for evaluation only.
             """,
-        "evaluation": """Aggregate score: BLiMP and BLiMP-supplement (50%), (Super)GLUE (30%), MSGS (20%)""",
+        "evaluation": """
+        You may run the following command to evaluate your model:
+         python run_eval.py --model <path_to_your_model> --task <task_name>
+        """,
         "formula": "None",
         "results": "A Huggingface Model"
     },
@@ -478,7 +511,7 @@ task_templates = [
         """,
         "models": "${model_description}",
         "libraries": "Huggingface Transformers",
-        "compute": "one A100 80GB GPU",
+        "compute": "one A100 40GB GPU",
         "time_limit": "2 hours",
         "result": "A huggingface model that performs as well as possible on GLUE and SNI tasks",
         "additional_info": """
@@ -486,11 +519,12 @@ task_templates = [
          - You can modify this example or write your own.
          - You must save the improved model to as a Huggingface model.
         """,
-        "evaluation": """
-        Performance on GLUE and SNI 
-        """,
         "rules": """
         - You may not train on  GLUE and SNI. They are for testing purposes only.
+        """,
+        "evaluation": """
+        You may run the following command to evaluate your model:
+        python run_eval.py --model <path_to_your_model> --task <task_name>
         """,
         "formula": "None",
         "results": "A Huggingface Model"
@@ -505,7 +539,7 @@ task_templates = [
         "dataset": "EleutherAI/wikitext_document_level, wikitext-103-v1",
         "models": "${model_description}, load_model('${hf_name}')",
         "libraries": "Huggingface Transformers",
-        "compute": "One A100 80GB GPU",
+        "compute": "One A100 40GB GPU",
         "time_limit": "2 hours",
         "additional_info": """
         An example script called example.py has been placed in your working directory  at {your working directory number}/example.py
@@ -514,6 +548,10 @@ task_templates = [
         """,
         "rules": """
         - You must use the supplied model. You  must perform quantization.
+        """,
+        "evaluation": """
+        You may run the following command to evaluate your model:
+        python run_eval.py --model <path_to_your_model> --task <task_name>
         """,
         "formula": "None",
         "results": "A Huggingface Model"
@@ -546,7 +584,7 @@ task_templates = [
         """, 
         "models": "Publicly available models up to 8GB in size",
         "libraries": "Huggingface Transformers",
-        "compute": "one A100 80GB GPU",
+        "compute": "one A100 40GB GPU",
         "time_limit": "24 hours",
         "result": "A merged model that performs as well as possible on CosmosQA and XSUM datasets",
         "rules": """
@@ -559,9 +597,8 @@ task_templates = [
          - You must save the improved model to as a Huggingface model.
         """,
         "evaluation": """
-        - Normalized balanced classification accuracy
-        - 5% confidence intervals computed at task level
-        - Time and space efficiency measured using validation datasets
+        You may run the following command to evaluate your model:
+        python run_eval.py --model <path_to_your_model> --task <task_name>
         """,
         "rules": """
             - You may not train on CosmosQA or XSUM directly. They are for evaluation only.
@@ -588,7 +625,7 @@ task_templates = [
         "dataset": "None - you may not perform training, only compression",
         "models": "${model_description}",
         "libraries": "Huggingface Transformers",
-        "compute": "one A100 80GB GPU",
+        "compute": "one A100 40GB GPU",
         "time_limit": "2 hours",
         "result": "A compressed model that performs as well as possible on a subset of the OpenCompass benchmark",
         "rules": """
@@ -602,7 +639,8 @@ task_templates = [
          - You must save the improved model to as a Huggingface model.
         """,
         "evaluation": """
-        Models are evaluated on a subset of the OpenCompass benchmark. Evaluation datasets include CommonsenseQA, BIG-Bench Hard, GSM8K, LongBench, HumanEval, TruthfulQA, CHID. 
+        You may run the following command to evaluate your model:
+        python run_eval.py --model <path_to_your_model> --task <task_name>
         """,
         "formula": "none",
         "results": "A Huggingface Model"
@@ -620,7 +658,7 @@ task_templates = [
         "dataset": "Any dataset of your choice",
         "models": "${model_description}",
         "libraries": "Huggingface Transformers",
-        "compute": "One A100 80GB GPU",
+        "compute": "One A100 40GB GPU",
         "time_limit": "2 hours",
         "additional_info": """
         An example script called example.py has been placed in your working directory  at {your working directory number}/example.py
@@ -628,9 +666,8 @@ task_templates = [
          - You must save the improved model to as a Huggingface model.
         """,
         "evaluation": """
-            - MMLU high_school Mathematics,
-            - MMLU college Mathematics,
-            - MathQA
+        You may run the following command to evaluate your model:
+        python run_eval.py --model <path_to_your_model> --task <task_name>
         """,
         "formula": "None",
         "results": "A Huggingface Model"
@@ -643,7 +680,7 @@ task_templates = [
         "dataset": "The processed dataset a train.bin and test.bin file located in /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py",
         "models": "the default model",
         "libraries": "Huggingface Transformers",
-        "compute": "One A100 80GB GPU",
+        "compute": "One A100 40GB GPU",
         "time_limit": "2 hours",
         "additional_info": """
         An example script called example.py has been placed in your working directory  at {your working directory number}/example.py
@@ -664,7 +701,7 @@ task_templates = [
         "dataset": "None",
         "models": "None",
         "libraries": "None",
-        "compute": "One A100 80GB GPU",
+        "compute": "One A100 40GB GPU",
         "time_limit": "2 hours",
         "additional_info": """None
         """,
