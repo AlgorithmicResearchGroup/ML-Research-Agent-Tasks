@@ -132,7 +132,7 @@ task_templates = [
                     })
             })
             """,
-            "models": "Any model",
+            "models": "Any model of your choosing",
             "libraries": "Huggingface Transformers",
             "compute": "one A100 40GB GPU",
             "time_limit": "24 hours",
@@ -171,7 +171,7 @@ task_templates = [
                 })
             })
             """,
-            "models": "Any model",
+            "models": "Any model of your choosing",
             "libraries": "Huggingface Transformers",
             "compute": """One A100 40GB GPU, 
             - GPU memory consumption should not exceed 6 GB at any point
@@ -208,7 +208,7 @@ task_templates = [
                 })
             })
             """, 
-            "models": "Any availavle model",
+            "models": "Any model of your choosing",
             "libraries": "Huggingface Transformers",
             "compute": """one A100 40GB GPU
                 -GPU Mem. Limit : 16GB
@@ -299,7 +299,7 @@ task_templates = [
             """,
             "starter_code": "https://github.com/TianjinYellow/EdgeDeviceLLMCompetition-Starting-Kit?tab=readme-ov-file#submission-requirements",
             "dataset": "None - you may not perform training, only compression",
-            "models": "Phi-2",
+            "models": "microsoft/phi-2",
             "libraries": "Huggingface Transformers",
             "compute": "one A100 40GB GPU",
             "time_limit": "24 hours",
@@ -344,7 +344,7 @@ task_templates = [
                 num_rows: 989000
             })
             """, 
-            "models": "Any model",
+            "models": "Any model of your choosing",
             "libraries": "Huggingface Transformers",
             "compute": "one A100 40GB GPU",
             "time_limit": "24 hours",
