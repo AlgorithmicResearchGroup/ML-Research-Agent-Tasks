@@ -132,7 +132,7 @@ task_templates = [
                     })
             })
             """,
-            "models": "${model_description}",
+            "models": "Any model",
             "libraries": "Huggingface Transformers",
             "compute": "one A100 40GB GPU",
             "time_limit": "24 hours",
@@ -171,7 +171,7 @@ task_templates = [
                 })
             })
             """,
-            "models": "${model_description}",
+            "models": "Any model",
             "libraries": "Huggingface Transformers",
             "compute": """One A100 40GB GPU, 
             - GPU memory consumption should not exceed 6 GB at any point
@@ -344,7 +344,7 @@ task_templates = [
                 num_rows: 989000
             })
             """, 
-            "models": "${model_description}",
+            "models": "Any model",
             "libraries": "Huggingface Transformers",
             "compute": "one A100 40GB GPU",
             "time_limit": "24 hours",
