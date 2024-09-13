@@ -8,7 +8,6 @@ task_templates = [
             "task": """train a model that performs as well as possible on a wide array of metrics. Start with an approved base model. Using only open-source data, fine-tune for a model on an A100 40GB GPU.
             A training run must complete in 24 hours.
             """,
-            "metric": "A subset of the MMLU benchmark",
             "dataset": """
             You are welcome to use any open sourced dataset. For example:
                 - Databricks-Dolly-15
@@ -153,7 +152,6 @@ task_templates = [
             "full_name": "Budgeted Model Training Challenge",
             "task": """train the best possible classifier for ImageNet100. You must pretrain the model. You may not fine-tune a pretrained model. Your goal is to maximize accuracy on the test set.
             """,
-            "metric": "Delta Perplexity",
             "dataset": "AlgorithmicResearchGroup/budget_model_train",
             "dataset_shape": """
             DatasetDict({
@@ -414,7 +412,6 @@ task_templates = [
         "full_name": "1LLM + 1GPU + 1hour: Mini-LLM Efficiency Challenge",
         "task": """Train a ${model_description} that performs as well as possible on a wide array of metrics. Using only open-source data, fine-tune a model.
         """,
-        "metric": "A subset of the HELM benchmark",
         "dataset": """
             You are welcome to use any open sourced dataset. For example:
                 - Databricks-Dolly-15
@@ -655,7 +652,6 @@ task_templates = [
         - MMLU college Mathematics ${mmlu_college_math}, 
         - MathQA ${mmlu_mathqa}.
         """,
-        "metric": "MMLU high_school Mathematics, MMLU college Mathematics, and MathQA",
         "dataset": "Any dataset of your choice",
         "models": "${model_description}",
         "libraries": "Huggingface Transformers",
@@ -677,7 +673,6 @@ task_templates = [
         "name": "mini_smoke_test",
         "task": """Train a model given the repository provided. Get a validation loss below 4.0. 
         """,
-        "metric": "Validation Loss",
         "dataset": "The processed dataset a train.bin and test.bin file located in /home/paperspace/Desktop/ai_research_bench/{working_directory_number}/{task_name}/example.py",
         "models": "the default model",
         "libraries": "Huggingface Transformers",
@@ -695,7 +690,6 @@ task_templates = [
         "name": "check_gpu",
         "task": """Write a script that ensures the GPU is available on the machine and that your PyTorch version has access to it.
         """,
-        "metric": "GPU confirmation",
         "dataset": "None",
         "models": "None",
         "libraries": "None",
