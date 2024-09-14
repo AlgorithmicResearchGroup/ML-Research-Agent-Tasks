@@ -138,9 +138,9 @@ task_templates = [
             "result": "A huggingface model that performs as well as possible on SuperGLUE.",
             "evaluation": """
             You may run the following command to evaluate your model:
-            lm_eval --model hf \
+            python -m lm_eval --model hf \
                     --model_args pretrained=<path_to_your_model> \
-                    --tasks super_glue \
+                    --tasks super-glue-lm-eval-v1 \
                     --device cuda:0 \
                     --batch_size 8
             """,
@@ -170,14 +170,14 @@ task_templates = [
             })
             """,
             "models": "Any model of your choosing",
-            "libraries": "Huggingface Transformers",
+            "libraries": "Huggingface Datasets, PyTorch",
             "compute": """One A100 40GB GPU, 
             - GPU memory consumption should not exceed 6 GB at any point
             - CPU Cores: 4
             - Training time should not exceed 9 hours,
             """,
             "time_limit": "24 hours",
-            "result": "A huggingface model that performs as well as possible on ImageNet100",
+            "result": "A PyTorch model that performs as well as possible on ImageNet100",
             "evaluation": """
             agent-eval --model-args <path_to_your_model> --task budget_model_training
             """,
@@ -187,31 +187,27 @@ task_templates = [
         {
             "name": "budget_model_inference",
             "full_name": "Budgeted Inference Challenge",
-            "task": """create the inference script balancing speed and accuracy for UltraMNIST digits with limited GPU memory and inference time.
+            "task": """create an model and inference script balancing speed and accuracy for UltraMNIST digits with limited GPU memory and inference time. When tested, this
+            model will be limited to 16GB memory.
             """,
             "dataset": "AlgorithmicResearchGroup/budget_model_inference",
             "dataset_shape": """
             DatasetDict({
                 train: Dataset({
-                    features: ['image', 'image_id', 'class'],
-                    num_rows: 102512
-                })
-                val: Dataset({
-                    features: ['image', 'image_id', 'class'],
-                    num_rows: 25628
+                    features: ['image', 'image_id', 'digit_sum'],
+                    num_rows: 28000
                 })
                 test: Dataset({
-                    features: ['image', 'image_id', 'class'],
-                    num_rows: 5000
+                    features: ['image', 'image_id', 'digit_sum'],
+                    num_rows: 2800
                 })
             })
             """, 
             "models": "Any model of your choosing",
-            "libraries": "Huggingface Transformers",
-            "compute": """one A100 40GB GPU
-                -GPU Mem. Limit : 16GB
-                -CPU Cores : 4
-                -RAM : 32GB
+            "libraries": "Huggingface Datasets, PyTorch",
+            "compute": """
+                - One A100 40GB GPU for training
+                - GPU Memory Limit At Test Time: 16GB 
             """,
             "time_limit": "24 hours",
             "result": "A inference script that predicts the sum of 3-5 digits per image",
