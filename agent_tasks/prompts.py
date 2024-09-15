@@ -323,7 +323,7 @@ task_templates = [
             - The model must be submitted in FP16 or FP32 format (no quantization allowed).
             """,
             "starter_code": "https://github.com/TianjinYellow/EdgeDeviceLLMCompetition-Starting-Kit?tab=readme-ov-file#submission-requirements",
-            "dataset": "Only C4 and Alpaca datasets allowed for training and fine-tuning: load_dataset('AlgorithmicResearchGroup/edge_llm_training', 'c4_combined_dataset'), load_dataset('AlgorithmicResearchGroup/edge_llm_training', 'alpaca_cleand')",
+            "dataset": "Only C4 and Alpaca datasets allowed for training and fine-tuning: load_dataset('AlgorithmicResearchGroup/edge_llm_training', 'c4_combined_dataset'), load_dataset('AlgorithmicResearchGroup/edge_llm_training', 'alpaca_cleaned')",
             "dataset_shape": """
             alpaca: 
             DatasetDict({
