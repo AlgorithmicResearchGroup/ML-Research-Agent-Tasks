@@ -179,7 +179,7 @@ task_templates = [
             "time_limit": "24 hours",
             "result": "A PyTorch model that performs as well as possible on ImageNet100",
             "evaluation": """
-            agent-eval --model-args <path_to_your_model> --task budget_model_training
+            agent-eval --model_args <path_to_your_model> --task budget_model_training
             """,
             "additional_info": """None""", 
             "formula": "TWE = (accuracy^2) / inference_time (in minutes)",
@@ -212,7 +212,7 @@ task_templates = [
             "time_limit": "24 hours",
             "result": "A inference script that predicts the sum of 3-5 digits per image",
             "evaluation": """
-            agent-eval --model-args <path_to_your_model> --task budget_model_inference
+            agent-eval --model_args <path_to_your_model> --task budget_model_inference
             """,
             "additional_info": """None""", 
             "formula": "S = M_{\text{avg}} \cdot M - T_{\text{avg}} \cdot T - C_{\text{avg}} \cdot C",
@@ -393,7 +393,7 @@ task_templates = [
             "time_limit": "24 hours",
             "result": "A model that generates the corresponding formal statement and proof in Lean 3",
             "evaluation": """
-            agent-eval --model-args <path_to_your_model> --task math_reasoning
+            agent-eval --model_args <path_to_your_model> --task math_reasoning
             """,
             "additional_info": """None""", 
             "formula": "None",
@@ -434,7 +434,7 @@ task_templates = [
         """,
         "evaluation": """
         You may run the following command to evaluate your model:
-        agent-eval --model-args <path_to_your_model> --task mini_llm_efficiency
+        agent-eval --model_args <path_to_your_model> --task mini_llm_efficiency
         """,
         "formula": """None""",
         "results": "A Huggingface Model"
@@ -475,7 +475,7 @@ task_templates = [
             """,
         "evaluation": """
         You may run the following command to evaluate your model:
-        agent-eval --model-args <path_to_your_model> --task mini_baby_lm
+        agent-eval --model_args <path_to_your_model> --task mini_baby_lm
         """,
         "formula": "None",
         "results": "A Huggingface Model"
@@ -518,7 +518,7 @@ task_templates = [
         """,
         "evaluation": """
         You may run the following command to evaluate your model:
-        agent-eval --model-args <path_to_your_model> --task mini_mini_pile
+        agent-eval --model_args <path_to_your_model> --task mini_mini_pile
         """,
         "formula": "None",
         "results": "A Huggingface Model"
@@ -545,7 +545,7 @@ task_templates = [
         """,
         "evaluation": """
         You may run the following command to evaluate your model:
-        agent-eval --model-args <path_to_your_model> --task mini_budget_inference
+        agent-eval --model_args <path_to_your_model> --task mini_budget_inference
         """,
         "formula": "None",
         "results": "A Huggingface Model"
@@ -592,7 +592,7 @@ task_templates = [
         """,
         "evaluation": """
         You may run the following command to evaluate your model:
-        agent-eval --model-args <path_to_your_model> --task mini_llm_merging
+        agent-eval --model_args <path_to_your_model> --task mini_llm_merging
         """,
         "rules": """
             - You may not train on CosmosQA or XSUM directly. They are for evaluation only.
@@ -634,7 +634,7 @@ task_templates = [
         """,
         "evaluation": """
         You may run the following command to evaluate your model:
-        agent-eval --model-args <path_to_your_model> --task mini_edge_llm_compression
+        agent-eval --model_args <path_to_your_model> --task mini_edge_llm_compression
         """,
         "formula": "none",
         "results": "A Huggingface Model"
@@ -660,7 +660,7 @@ task_templates = [
         """,
         "evaluation": """
         You may run the following command to evaluate your model:
-        agent-eval --model-args <path_to_your_model> --task mini_math_reasoning
+        agent-eval --model_args <path_to_your_model> --task mini_math_reasoning
         """,
         "formula": "None",
         "results": "A Huggingface Model"
