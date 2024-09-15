@@ -187,7 +187,7 @@ task_templates = [
         {
             "name": "budget_model_inference",
             "full_name": "Budgeted Inference Challenge",
-            "task": """create an model and inference script balancing speed and accuracy for UltraMNIST digits with limited GPU memory and inference time. When tested, this
+            "task": """create a model and inference script balancing speed and accuracy for UltraMNIST digits with limited GPU memory and inference time. When tested, this
             model will be limited to 16GB memory.
             """,
             "dataset": "AlgorithmicResearchGroup/budget_model_inference",
