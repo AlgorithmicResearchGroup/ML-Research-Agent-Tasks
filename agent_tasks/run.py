@@ -8,7 +8,7 @@ from agent_tasks.prompts import retreive_tasks, combine_task_and_model
 
 def get_task(directory: str, benchmark: str, task_name: str) -> Dict[str, Any]:
     """
-    Copy files from a task in a benchmark to a specified directory, execute it, and return the result.
+    Copy files and directories from a task in a benchmark to a specified directory, execute it, and return the result.
 
     Args:
     directory (str): Target directory path
@@ -37,14 +37,18 @@ def get_task(directory: str, benchmark: str, task_name: str) -> Dict[str, Any]:
     # Create the target directory if it doesn't exist
     target_dir.mkdir(parents=True, exist_ok=True)
 
-    # Copy only the files within the task directory to the target directory
+    # Copy files and directories
     try:
         for item in task_dir.iterdir():
             if item.is_file():
+                # Copy individual files
                 shutil.copy2(str(item), str(target_dir))
-        print(f"Successfully copied files from '{task_name}' in {benchmark} to {directory}")
+            elif item.is_dir():
+                # Copy entire subdirectories
+                shutil.copytree(str(item), str(target_dir / item.name), dirs_exist_ok=True)
+        print(f"Successfully copied files and directories from '{task_name}' in {benchmark} to {directory}")
     except Exception as e:
-        return {"error": f"Error copying task files: {e}"}
+        return {"error": f"Error copying task files and directories: {e}"}
 
     # Change to the target directory
     os.chdir(str(target_dir))
@@ -95,7 +99,3 @@ def get_task(directory: str, benchmark: str, task_name: str) -> Dict[str, Any]:
         return {"error": f"Error rendering template: {str(e)}"}
 
     return task
-
-# Example usage (can be removed if not needed)
-if __name__ == "__main__":
-    result = get_task("/path/to/target/directory", "mini_benchmark", "task_name")
