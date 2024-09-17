@@ -96,6 +96,8 @@ task_templates = [
             "result": "A huggingface model that performs as well as possible on BLiMP",
             "rules": """
             - You may not train on BLiMP directly. They are for evaluation only.
+            - You may not fine-tune a pretrained model. You must train from scratch.
+            - You must train strictly on the dataset provided.
             """,
             "evaluation": """
             You may run the following command to evaluate your model:
