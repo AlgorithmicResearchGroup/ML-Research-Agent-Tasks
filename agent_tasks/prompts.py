@@ -384,7 +384,7 @@ task_templates = [
             "time_limit": "24 hours",
             "result": "A model that generates the corresponding formal statement and proof in Lean 3",
             "evaluation": """
-            agent-eval --model_args <path_to_your_model> --task math_reasoning
+            You must evaluate your model on the a portion of the data provided.
             """,
             "additional_info": """None""", 
             "formula": "None",
