@@ -366,21 +366,12 @@ task_templates = [
             "full_name": "ICML 2024 Challenges on Automated Math Reasoning: Track 1-1 Autoformalization",
             "task": """A model that, given a problem statement and proof in natural language, generates the corresponding formal statement and proof in Lean 3
             """,
-            "dataset": "load_dataset('AlgorithmicResearchGroup/math_reasoning_autoformalization_track_1', 'train'), load_dataset('AlgorithmicResearchGroup/math_reasoning_autoformalization_track_1', 'test')",
+            "dataset": "load_dataset('AlgorithmicResearchGroup/math_reasoning_autoformalization_track')",
             "dataset_shape": """
             train: 
-            DatasetDict({
-                train: Dataset({
-                    features: ['name', 'informal_statement', 'informal_proof'],
-                    num_rows: 4866
-                })
-            })
-            test:
-            DatasetDict({
-                train: Dataset({
-                    features: ['name', 'formal_proof'],
-                    num_rows: 4866
-                })
+            Dataset({
+                features: ['name', 'informal_statement', 'informal_proof', 'formal_proof'],
+                num_rows: 3963
             })
             """, 
             "models": """
