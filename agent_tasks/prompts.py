@@ -319,7 +319,7 @@ task_templates = [
             "full_name": "Edge LLMs Challenge: Training from Scratch", 
             "task": """
             Train language model from scratch without using pre-trained LLMs
-            - The model must run on a device with 12 GB DRAM. 
+            - The model must run on a device with 1 GB DRAM. 
             - The model must be submitted in FP16 or FP32 format (no quantization allowed).
             """,
             "starter_code": "https://github.com/TianjinYellow/EdgeDeviceLLMCompetition-Starting-Kit?tab=readme-ov-file#submission-requirements",
@@ -342,19 +342,19 @@ task_templates = [
             "libraries": "Huggingface Transformers",
             "compute": "one A100 40GB GPU",
             "time_limit": "24 hours",
-            "result": "A huggingface model that performs as well as possible on the MMLU benchmark",
+            "result": "A huggingface model that performs as well as possible on the SuperGLUE benchmark",
             "rules": """
             - Only C4 and Alpaca datasets allowed for training and fine-tuning
             - You may not use pre-trained LLMs
             - You may not quantize the model
-            - The model must run on a device with 12 GB DRAM. 
+            - The model must run on a device with 1 GB DRAM. 
             - The model must be submitted in FP16 or FP32 format (no quantization allowed).
             """, 
             "evaluation": """ 
             You may run the following command to evaluate your model:
             lm_eval --model hf \
                     --model_args pretrained="<path_to_your_model>" \
-                    --tasks mmlu  \
+                    --tasks super-glue-lm-eval-v1  \
                     --device cuda:0 \
                     --batch_size 8
             """,
@@ -366,7 +366,7 @@ task_templates = [
             "full_name": "ICML 2024 Challenges on Automated Math Reasoning: Track 1-1 Autoformalization",
             "task": """A model that, given a problem statement and proof in natural language, generates the corresponding formal statement and proof in Lean 3
             """,
-            "dataset": "load_dataset('AlgorithmicResearchGroup/math_reasoning_autoformalization_track')",
+            "dataset": "You can use the following dataset: load_dataset('AlgorithmicResearchGroup/math_reasoning_autoformalization_track'), however other open source datasets are allowed.",
             "dataset_shape": """
             train: 
             Dataset({
@@ -375,9 +375,7 @@ task_templates = [
             })
             """, 
             "models": """
-            - Mistral-7B-Instrcut-v0.2
-            - Llama-2-7b-chat
-            - Any other open source model
+            - Any open source model
             """,
             "libraries": "Huggingface Transformers",
             "compute": "one A100 40GB GPU",
