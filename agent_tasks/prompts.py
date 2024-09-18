@@ -114,7 +114,7 @@ task_templates = [
             "name": "mini_pile",
             "full_name": "MiniPile Challenge",
             "task": """
-            Use the MiniPile dataset to pre-training the best possible language model. The model will be tested on SuperGLUE. You have 24 hours to complete the task.
+            use the MiniPile dataset to pre-train the best possible language model. The model will be tested on SuperGLUE. You have 24 hours to complete the task.
             """,
             "dataset": "AlgorithmicResearchGroup/minipile",
             "dataset_shape": """
@@ -289,7 +289,7 @@ task_templates = [
             "name": "edge_llm_compression",
             "full_name": "Edge LLMs Challenge: Compression",  
             "task": """
-            Develop compression methods for pre-trained LLMs to run on an memory-constrained device. 
+            Develop a compression method for pre-trained LLMs to run on an memory-constrained device. 
             - The model must run on a device with 12 GB DRAM. 
             - The model must be submitted in FP16 or FP32 format (no quantization allowed).
             """,
@@ -320,7 +320,7 @@ task_templates = [
             "name": "edge_llm_training",
             "full_name": "Edge LLMs Challenge: Training from Scratch", 
             "task": """
-            Train language model from scratch without using pre-trained LLMs
+            train language model from scratch without using pre-trained LLMs
             - The model must run on a device with 1 GB DRAM. 
             - The model must be submitted in FP16 or FP32 format (no quantization allowed).
             """,
@@ -366,7 +366,7 @@ task_templates = [
         {
             "name": "math_reasoning",
             "full_name": "ICML 2024 Challenges on Automated Math Reasoning: Track 1-1 Autoformalization",
-            "task": """A model that, given a problem statement and proof in natural language, generates the corresponding formal statement and proof in Lean 3
+            "task": """train a model that, given a problem statement and proof in natural language, generates the corresponding formal statement and proof in Lean 3
             """,
             "dataset": "You can use the following dataset: load_dataset('AlgorithmicResearchGroup/math_reasoning_autoformalization_track'), however other open source datasets are allowed.",
             "dataset_shape": """
@@ -383,6 +383,8 @@ task_templates = [
             "compute": "one A100 40GB GPU",
             "time_limit": "24 hours",
             "result": "A model that generates the corresponding formal statement and proof in Lean 3",
+            "rules": """
+            """,
             "evaluation": """
             You must evaluate your model on the a portion of the data provided.
             """,
