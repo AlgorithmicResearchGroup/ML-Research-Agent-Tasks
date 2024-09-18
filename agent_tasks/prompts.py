@@ -69,7 +69,7 @@ task_templates = [
         {
             "name": "baby_lm",
             "full_name": "BabyLM Challenge (Strict-Small)",
-            "task": """train a large language model on a pretraining corpus of approximately 10M words (Strict-Small). The must be trained from scratch.
+            "task": """train a large language model on a pretraining corpus of approximately 10M words (Strict-Small). The model must be trained from scratch.
             """,
             "dataset": """You can load the dataset with load_dataset(AlgorithmicResearchGroup/babylm)""",
             "dataset_shape": """
