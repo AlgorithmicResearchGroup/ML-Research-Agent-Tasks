@@ -9,7 +9,7 @@ The AI Competition Benchmark aims to measure the acceleration of AI agents in AI
 ## Installation
 
 ```bash
-pip install agent-tasks
+pip install mlrb-agent-tasks
 ```
 
 # Usage
