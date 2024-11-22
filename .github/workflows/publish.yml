@@ -1,8 +1,8 @@
-name: Publish Python Package to TestPyPI
+name: Publish Python Package to PyPI
 
 on:
   push:
-    branches: [ master ]  # or any branch you want to trigger the action
+    branches: [ master, main ]  # or any branch you want to trigger the action
 
 jobs:
   deploy:
