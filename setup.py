@@ -12,7 +12,7 @@ extra_files = package_files('mlrb_agent_tasks/mini_benchmark') + package_files('
 
 setup(
     name='mlrb-agent-tasks',  
-    version='0.1.1', 
+    version='0.2.13', 
     packages=find_packages(),
     description='A task package for ML Research Bench', 
     long_description=open('README.md').read(),
