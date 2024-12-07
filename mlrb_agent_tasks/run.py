@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Dict, Any
 import subprocess
 from jinja2 import Environment, FileSystemLoader, TemplateNotFound
-from agent_tasks.prompts import retreive_tasks, combine_task_and_model
+from mlrb_agent_tasks.prompts import retreive_tasks, combine_task_and_model
 
 def get_task(directory: str, benchmark: str, task_name: str) -> Dict[str, Any]:
     """

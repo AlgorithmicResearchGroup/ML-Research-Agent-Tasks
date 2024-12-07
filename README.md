@@ -1,10 +1,10 @@
-# ML Research Benchmark
+# ML Research Benchmark Tasks
 
 This repository contains the tasks for ML Research Benchmark, a benchmarkdesigned to evaluate the capabilities of AI agents in accelerating ML research and development. The benchmark consists of 9 competition-level tasks that span the spectrum of activities typically undertaken by ML researchers.
 
 ## Introduction
 
-The AI Competition Benchmark aims to measure the acceleration of AI agents in AI research and development. It focuses on competition-level tasks that reflect the current frontiers of machine learning research, providing a more nuanced and challenging evaluation environment than existing benchmarks.
+The MLRB aims to measure the acceleration of AI agents in ML research and development. It focuses on competition-level tasks that reflect the current frontiers of ML research, providing a more nuanced and challenging evaluation environment than existing benchmarks.
 
 ## Installation
 
