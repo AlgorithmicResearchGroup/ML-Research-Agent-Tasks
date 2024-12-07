@@ -33,10 +33,10 @@ This function will copy the task to the specified path and return a dictionary w
 ## Example Usage
 
 ```python
-from agent_tasks import get_task
+from mlrb_agent_tasks import get_task
 
 # Example usage
-result = get_task("./", "mini_benchmark", "mini_baby_lm")
+result = get_task("./", "full_benchmark", "llm_efficiency")
 print(result['prompt'])
 ```
 
