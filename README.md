@@ -2,9 +2,15 @@
 
 This repository contains the tasks for ML Research Benchmark, a benchmarkdesigned to evaluate the capabilities of AI agents in accelerating ML research and development. The benchmark consists of 9 competition-level tasks that span the spectrum of activities typically undertaken by ML researchers.
 
+
 ## Introduction
 
 The MLRB aims to measure the acceleration of AI agents in ML research and development. It focuses on competition-level tasks that reflect the current frontiers of ML research, providing a more nuanced and challenging evaluation environment than existing benchmarks.
+
+- [:paperclip: ML Research Benchmark Paper](https://arxiv.org/abs/2410.22553) [![arXiv](https://img.shields.io/badge/arXiv-1234.56789-b31b1b.svg)](https://arxiv.org/abs/1234.56789)
+- [:robot: ML Research Agent](https://github.com/AlgorithmicResearchGroup/ML-Research-Agent)
+- [:white_check_mark: ML Research Tasks](https://github.com/AlgorithmicResearchGroup/ML-Research-Agent-Tasks)
+- [:chart_with_upwards_trend: ML Research Evaluation](https://github.com/AlgorithmicResearchGroup/ML-Research-Agent-Evals)
 
 ## Installation
 
