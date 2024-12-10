@@ -2,7 +2,7 @@ name: Publish Python Package to PyPI
 
 on:
   push:
-    branches: [ master, main ]  # or any branch you want to trigger the action
+    branches: [ master, main, test_task]  # or any branch you want to trigger the action
 
 jobs:
   deploy:
